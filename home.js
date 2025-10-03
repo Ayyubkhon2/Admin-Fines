@@ -169,93 +169,64 @@ province.addEventListener("mouseenter", () => {
 
 
 
-
-
-
-
-// const track = document.querySelector(".carousel__track");
-
-// function updateContent() {
-//   track.innerHTML = "";
-
-//   carouselData.forEach((item) => {
-//     const card = template.content.cloneNode(true);
-//     populateCard(card, item, "carousel");
-//     track.appendChild(card);
-//   });
-// }
-
-
-
-
-// Slider logic
-
-let isVertical = false; 
 function initSlider() {
+  const track = document.querySelector(".carousel__track");
   const btnLeft = document.querySelector(".carousel__btn--left");
   const btnRight = document.querySelector(".carousel__btn--right");
   if (!track || !btnLeft || !btnRight) return;
 
   let cardWidth = 0;
-let gap = 0;
-
   let groupSize = 3;
   let index = 0;
-  let baseOffset = 0;
   let autoplayTimer;
   let scrollCooldown = false;
 
-function measure() {
-  const cards = Array.from(track.querySelectorAll(".carousel__card"));
-  if (!cards.length) return 0;
+  function measure() {
+    const cards = Array.from(track.querySelectorAll(".carousel__card"));
+    if (!cards.length) return 0;
+    const r0 = cards[0].getBoundingClientRect();
+    cardWidth = r0.width + 16; // account for gap
 
-  const r0 = cards[0].getBoundingClientRect();
-  const r1 = cards[1]?.getBoundingClientRect();
-
-  // detect vertical layout
-  isVertical = r1 && (r1.top - (r0.top + r0.height)) > 0;
-
-  if (isVertical) {
-    cardHeight = r0.height + gap;
-    groupSize = 1; 
-  } else {
-    cardWidth = r0.width + gap;
     if (window.innerWidth >= 1200) groupSize = 3;
     else if (window.innerWidth >= 800) groupSize = 2;
     else groupSize = 1;
+
+    return cards.length;
   }
 
-  return cards.length;
-}
-
 function applyTransform() {
-  const offset = index * (isVertical ? cardHeight : cardWidth) * groupSize;
-  track.style.transform = isVertical
-    ? `translateY(-${offset}px)`
-    : `translateX(-${offset}px)`;
+  const carousel = track.parentElement; // .carousel
+  const carouselWidth = carousel.getBoundingClientRect().width;
+
+  const cards = Array.from(track.querySelectorAll(".carousel__card"));
+  if (!cards.length) return;
+
+  const cardWidth = cards[0].getBoundingClientRect().width + 16; // with gap
+  const totalWidth = cards.length * cardWidth;
+
+  // center offset
+  const baseOffset = Math.max(0, (carouselWidth - totalWidth) / 2);
+
+  const offset = index * cardWidth * groupSize;
+  track.style.transform = `translateX(${baseOffset - offset}px)`;
 }
-
-
-
 
 function goRight() {
   const cardsLength = measure();
   const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
-  if (index < maxIndex) index++;
-  else index = 0;
+  index = index < maxIndex ? index + 1 : 0; // wrap
   applyTransform();
 }
 
 function goLeft() {
   const cardsLength = measure();
   const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
-  if (index > 0) index--;
-  else index = 0;
+  index = index > 0 ? index - 1 : maxIndex; // wrap
   applyTransform();
 }
 
 
-  track.style.transition = "transform 600ms ease-out";
+
 
   function resetAutoplay() {
     clearTimeout(autoplayTimer);
@@ -280,17 +251,9 @@ function goLeft() {
 
       clearTimeout(autoplayTimer);
 
-      const cardsLength = measure();
-const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+      if (e.deltaY > 0) goRight();
+      else goLeft();
 
-
-      if (e.deltaY > 0) {
-        if (index < maxIndex) index++;
-      } else {
-        if (index > 0) index--;
-      }
-
-      applyTransform();
       autoplayTimer = setTimeout(resetAutoplay, 3000);
 
       setTimeout(() => {
@@ -300,26 +263,22 @@ const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
     { passive: false }
   );
 
-  track.addEventListener("mouseenter", () => {
-    clearTimeout(autoplayTimer);
-  });
+  track.addEventListener("mouseenter", () => clearTimeout(autoplayTimer));
   track.addEventListener("mouseleave", resetAutoplay);
 
- 
-
-
   measure();
-applyTransform();
+  applyTransform();
   resetAutoplay();
 
-window.addEventListener("resize", () => {
-  const cardsLength = measure();
-  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
-  if (index > maxIndex) index = maxIndex; 
-  applyTransform();
-});
+  window.addEventListener("resize", () => {
+    const cardsLength = measure();
+    const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+    if (index > maxIndex) index = maxIndex;
+    applyTransform();
+  });
 }
 
+document.addEventListener("DOMContentLoaded", initSlider);
 
 
 
@@ -339,7 +298,7 @@ i18next.init(
           footer:
             "© 2025 Все права защищены. Национальное агентство перспективных проектов",
           hero_text:
-            "Автоматизированная система применения административных штрафов в сфере рынка капитала",
+            "Автоматизированная система применения мер воздействия на рынке капитала",
           overview_title: "Общая статистика",
           overview_subtitle: "Статистика по штрафам",
           stats_companies: "Всего штрафов",
@@ -351,13 +310,9 @@ i18next.init(
           sanction: "Узнать информацию о финансовых санкциях ",
           calculator: "Калькулятор штрафов",
           appeal: "Подать апелляцию", 
-
-         
           switcher_cards: "Административные штрафы",
           switcher_overview: "Финансовые санкции",
           map_title: "Меры наказания эмитентов",
-
-
           regions: {
             karakalpakstan: "Республика Каракалпакстан",
             andijan: "Андижанская область",
@@ -374,6 +329,14 @@ i18next.init(
             tashkent_city: "г. Ташкент",
             khorezm: "Хорезмская область",
           },
+          carousel_title: "Полезные ссылки",
+          lex: "Национальная база данных законодательства Республики Узбекистан",
+          mygov: "Единый портал интерактивных государственных услуг",
+          zakon_palata: "Законодательная палата Олий Мажлиса Республики Узбекистан",
+          mvd: "Министерство внутренних дел Республики Узбекистан",
+          sud: "Верховный суд Республики Узбекистан",
+          portal: "Национальный правовой интернет-портал Республики Узбекистан",
+
         },
       },
       en: {
@@ -384,8 +347,7 @@ i18next.init(
           cabinet: "Cabinet",
           footer:
             "© 2025 All rights reserved. National Agency of Perspective Projects",
-          hero_text:
-            "Automated System for Applying Administrative Fines in the Capital Market",
+          hero_text: "Automated System for the Application of Enforcement Measures in the Capital Market",
           overview_title: "General statistics",
           overview_subtitle: "Penalty statistics",
           stats_companies: "Total fines",
@@ -416,6 +378,13 @@ i18next.init(
             tashkent_city: "Tashkent City",
             khorezm: "Khorezm Region",
           },
+          carousel_title: "Useful Links",
+          lex: "National Legislation Database of the Republic of Uzbekistan",
+mygov: "Unified Portal of Interactive State Services",
+zakon_palata: "Legislative Chamber of the Oliy Majlis of the Republic of Uzbekistan",
+mvd: "Ministry of Internal Affairs of the Republic of Uzbekistan",
+sud: "Supreme Court of the Republic of Uzbekistan",
+portal: "National Legal Internet Portal of the Republic of Uzbekistan",
         },
       },
       uz: {
@@ -427,7 +396,7 @@ i18next.init(
           footer:
             "© 2025 Barcha huquqlar himoyalangan. Istiqbolli loyihalar milliy agentligi",
           hero_text:
-            "Kapital bozori sohasida ma'muriy jarimalarni qo'llashning avtomatlashtirilgan tizimi",
+            "Kapital bozorida ta'sir choralarini qo'llash uchun avtomatlashtirilgan tizim",
           overview_title: "Umumiy statistika",
           overview_subtitle: "Jarimalar statistikasi",
           stats_companies: "Jami jarimalar",
@@ -441,7 +410,7 @@ i18next.init(
           appeal: "Shikoyat yuborish",
           switcher_cards: "Ma'muriy jarimalar",
           switcher_overview: "Moliyaviy sanksiyalar",
-          map_title: "Emitentlarni jazolash choralari",
+          map_title: "Emitentlarni ta'sir choralari",
           regions: {
             karakalpakstan: "Qoraqalpog'iston Respublikasi",
             andijan: "Andijon viloyati",
@@ -458,7 +427,14 @@ i18next.init(
             tashkent_city: "Toshkent shahri",
             khorezm: "Xorazm viloyati",
           },
-        },
+          carousel_title: "Foydali havolalar",
+          lex: "O‘zbekiston Respublikasi qonunchilik milliy ma’lumotlar bazasi",
+mygov: "Interfaol davlat xizmatlari yagona portali",
+zakon_palata: "O‘zbekiston Respublikasi Oliy Majlis Qonunchilik palatasi",
+mvd: "O‘zbekiston Respublikasi Ichki ishlar vazirligi",
+sud: "O‘zbekiston Respublikasi Oliy sudi",
+portal: "O‘zbekiston Respublikasi Milliy huquqiy internet-portali",
+        }, 
       },
     },
   },
