@@ -239,6 +239,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  border: 1px solid rgba(0, 123, 255, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 123, 255, 0.15);
 }
 
 .switcher {
@@ -273,7 +275,7 @@ a {
   color: #212529;
 }
 .switcher__btn--active {
-  background: #1a4c80;
+  background: #0056B3;
   color: #fff;
   border: 1px solid #fff;
 }
@@ -331,19 +333,167 @@ a {
   overflow: visible;
 }
 .map__tooltip {
-  max-width: clamp(8rem, 80vw, 14rem);
+  max-width: clamp(8rem, 80vw, 16rem);
   width: auto;
   position: fixed;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
   padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
   border-radius: 1rem;
   font-size: clamp(0.8rem, 2vw, 1.25rem);
   line-height: 1.2;
   pointer-events: none;
-  display: none;
   z-index: 999;
-  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.tooltip__header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip__stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tooltip__stat {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tooltip__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip__icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+.tooltip__number1 {
+  font-weight: 700;
+  color: #ffeb3b;
+}
+
+.tooltip__number2 {
+  font-weight: 700;
+  color: #40C4FF;
+}
+
+.tooltip__number3 {
+  font-weight: 700;
+  color: #FF6F00;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.carousel__track {
+  margin: 4rem auto 8rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  transition: all 0.3s;
+  width: 100%;
+  overflow-x: visible;
+  scroll-behavior: smooth;
+}
+.carousel__card {
+  background: rgba(128, 128, 128, 0.5);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  flex: 0 0 auto;
+  width: clamp(16rem, 20vw, 18rem);
+  min-height: clamp(10rem, 25vw, 15rem);
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+.carousel__location-icon {
+  width: 0.85rem;
+  height: 0.75rem;
+}
+.carousel__rating {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.carousel__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 1.25rem;
+}
+.carousel__circle {
+  width: clamp(3rem, 5vw, 4rem);
+  height: clamp(3rem, 5vw, 4rem);
+  border: 0.25rem solid currentColor;
+}
+.carousel__grade {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: bold;
+}
+.carousel__score {
+  font-size: 1.375rem;
+}
+.carousel__icon {
+  width: clamp(4rem, 8vw, 6rem);
+  height: clamp(4rem, 8vw, 6rem);
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #f4f8ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.625rem;
+}
+.carousel__photo {
+  width: clamp(3rem, 6vw, 4.5rem);
+  height: clamp(3rem, 6vw, 4.5rem);
+  border-radius: 1rem;
+}
+.carousel__btn-box {
+  display: flex;
+  gap: 1.25rem;
+  position: absolute;
+  top: 23rem;
+}
+.carousel__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.carousel__btn--right, .carousel__btn--left {
+  width: 4rem;
+  height: 2.25rem;
 }
 
 html {

@@ -64,14 +64,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const regionKey = province.dataset.region;
     const value = parseInt(province.dataset.value, 10) || 0;
 
-    // Hover in
-    province.addEventListener("mouseenter", () => {
-      const translatedName = regionKey
-        ? i18next.t(`regions.${regionKey}`)
-        : i18next.t("regions.unknown");
+// Hover in
+province.addEventListener("mouseenter", () => {
+  const translatedName = regionKey
+    ? i18next.t(`regions.${regionKey}`)
+    : i18next.t("regions.unknown");
 
-      tooltip.innerHTML = `<strong>${translatedName}</strong><br/>${value}`;
-      tooltip.style.display = "block";
+  // Example: fetch numbers from dataset (expand if you’ll add more values later)
+  const stat1 = province.dataset.value1 || province.dataset.value || 0;
+  const stat2 = province.dataset.value2 || 0;
+  const stat3 = province.dataset.value3 || 0;
+
+    tooltip.innerHTML = `
+    <div class="tooltip__header">${translatedName}</div>
+    <div class="tooltip__stats">
+      <div class="tooltip__stat">
+        <span class="tooltip__icon"><img src="assets/institution-icon.png"></span>
+        <span class="tooltip__number1">${stat1}</span>
+      </div>
+      <div class="tooltip__stat">
+        <span class="tooltip__icon"><img src="assets/fines-icon.png"></span>
+        <span class="tooltip__number2">${stat2}</span>
+      </div>
+      <div class="tooltip__stat">
+        <span class="tooltip__icon"><img src="assets/amount-icon.png"></span>
+        <span class="tooltip__number3">${stat3}</span>  
+      </div>
+    </div>
+  `;
+  tooltip.style.display = "block";
+
 
       // Create astral copy
       const copy = province.cloneNode(true);
@@ -96,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    
     // Move tooltip
     province.addEventListener("mousemove", (e) => {
       const tooltipWidth = tooltip.offsetWidth;
@@ -141,6 +164,162 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+
+
+
+
+
+
+// const track = document.querySelector(".carousel__track");
+
+// function updateContent() {
+//   track.innerHTML = "";
+
+//   carouselData.forEach((item) => {
+//     const card = template.content.cloneNode(true);
+//     populateCard(card, item, "carousel");
+//     track.appendChild(card);
+//   });
+// }
+
+
+
+
+// Slider logic
+
+let isVertical = false; 
+function initSlider() {
+  const btnLeft = document.querySelector(".carousel__btn--left");
+  const btnRight = document.querySelector(".carousel__btn--right");
+  if (!track || !btnLeft || !btnRight) return;
+
+  let cardWidth = 0;
+let gap = 0;
+
+  let groupSize = 3;
+  let index = 0;
+  let baseOffset = 0;
+  let autoplayTimer;
+  let scrollCooldown = false;
+
+function measure() {
+  const cards = Array.from(track.querySelectorAll(".carousel__card"));
+  if (!cards.length) return 0;
+
+  const r0 = cards[0].getBoundingClientRect();
+  const r1 = cards[1]?.getBoundingClientRect();
+
+  // detect vertical layout
+  isVertical = r1 && (r1.top - (r0.top + r0.height)) > 0;
+
+  if (isVertical) {
+    cardHeight = r0.height + gap;
+    groupSize = 1; 
+  } else {
+    cardWidth = r0.width + gap;
+    if (window.innerWidth >= 1200) groupSize = 3;
+    else if (window.innerWidth >= 800) groupSize = 2;
+    else groupSize = 1;
+  }
+
+  return cards.length;
+}
+
+function applyTransform() {
+  const offset = index * (isVertical ? cardHeight : cardWidth) * groupSize;
+  track.style.transform = isVertical
+    ? `translateY(-${offset}px)`
+    : `translateX(-${offset}px)`;
+}
+
+
+
+
+function goRight() {
+  const cardsLength = measure();
+  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+  if (index < maxIndex) index++;
+  else index = 0;
+  applyTransform();
+}
+
+function goLeft() {
+  const cardsLength = measure();
+  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+  if (index > 0) index--;
+  else index = 0;
+  applyTransform();
+}
+
+
+  track.style.transition = "transform 600ms ease-out";
+
+  function resetAutoplay() {
+    clearTimeout(autoplayTimer);
+    autoplayTimer = setTimeout(goRight, 10000);
+  }
+
+  btnRight.addEventListener("click", () => {
+    goRight();
+    resetAutoplay();
+  });
+  btnLeft.addEventListener("click", () => {
+    goLeft();
+    resetAutoplay();
+  });
+
+  track.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      if (scrollCooldown) return;
+      scrollCooldown = true;
+
+      clearTimeout(autoplayTimer);
+
+      const cardsLength = measure();
+const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+
+
+      if (e.deltaY > 0) {
+        if (index < maxIndex) index++;
+      } else {
+        if (index > 0) index--;
+      }
+
+      applyTransform();
+      autoplayTimer = setTimeout(resetAutoplay, 3000);
+
+      setTimeout(() => {
+        scrollCooldown = false;
+      }, 400);
+    },
+    { passive: false }
+  );
+
+  track.addEventListener("mouseenter", () => {
+    clearTimeout(autoplayTimer);
+  });
+  track.addEventListener("mouseleave", resetAutoplay);
+
+ 
+
+
+  measure();
+applyTransform();
+  resetAutoplay();
+
+window.addEventListener("resize", () => {
+  const cardsLength = measure();
+  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+  if (index > maxIndex) index = maxIndex; 
+  applyTransform();
+});
+}
+
 
 
 
