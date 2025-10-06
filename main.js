@@ -104,11 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(
-  (entries, observer) => {
+  (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+      } else {
+        // Reset when it leaves viewport (so it can animate again)
+        entry.target.classList.remove("visible");
       }
     });
   },
@@ -116,6 +118,7 @@ const observer = new IntersectionObserver(
 );
 
 reveals.forEach((el) => observer.observe(el));
+
 
 /* Magnetic button */
 const buttons = document.querySelectorAll(".magnetic-button");

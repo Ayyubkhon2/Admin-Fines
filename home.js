@@ -70,7 +70,6 @@ province.addEventListener("mouseenter", () => {
     ? i18next.t(`regions.${regionKey}`)
     : i18next.t("regions.unknown");
 
-  // Example: fetch numbers from dataset (expand if you’ll add more values later)
   const stat1 = province.dataset.value1 || province.dataset.value || 0;
   const stat2 = province.dataset.value2 || 0;
   const stat3 = province.dataset.value3 || 0;
@@ -93,16 +92,12 @@ province.addEventListener("mouseenter", () => {
     </div>
   `;
   tooltip.style.display = "block";
-
-
-      // Create astral copy
+ 
       const copy = province.cloneNode(true);
       copy.classList.add("province-copy");
-
-      // Full opacity version
+    
       copy.setAttribute("fill-opacity", "1");
-
-      // Start hidden (smooth transition in)
+      
       copy.style.opacity = "0";
       copy.style.transform = "translateY(0)";
       copy.style.transition = "opacity 0.3s ease, transform 0.3s ease";
@@ -110,8 +105,7 @@ province.addEventListener("mouseenter", () => {
       province.parentNode.appendChild(copy);
       province._copy = copy;
       copy.style.pointerEvents = "none";
-
-      // Trigger animation
+     
       requestAnimationFrame(() => {
         copy.style.opacity = "1";
         copy.style.transform = "translateY(-10px)";
@@ -145,12 +139,10 @@ province.addEventListener("mouseenter", () => {
 
       if (province._copy) {
         const copy = province._copy;
-
-        // Animate fade-out
+        
         copy.style.opacity = "0";
         copy.style.transform = "translateY(0)";
-
-        // Remove after transition ends
+        
         copy.addEventListener(
           "transitionend",
           () => {
@@ -168,7 +160,7 @@ province.addEventListener("mouseenter", () => {
 
 
 
-
+// Carousel Slider
 function initSlider() {
   const track = document.querySelector(".carousel__track");
   const btnLeft = document.querySelector(".carousel__btn--left");
@@ -176,109 +168,145 @@ function initSlider() {
   if (!track || !btnLeft || !btnRight) return;
 
   let cardWidth = 0;
-  let groupSize = 3;
   let index = 0;
-  let autoplayTimer;
+  let currentOffset = 0;
+  let targetOffset = 0;
+  let animating = false;
   let scrollCooldown = false;
 
   function measure() {
     const cards = Array.from(track.querySelectorAll(".carousel__card"));
     if (!cards.length) return 0;
     const r0 = cards[0].getBoundingClientRect();
-    cardWidth = r0.width + 16; // account for gap
-
-    if (window.innerWidth >= 1200) groupSize = 3;
-    else if (window.innerWidth >= 800) groupSize = 2;
-    else groupSize = 1;
-
+    cardWidth = r0.width + 16; 
     return cards.length;
   }
 
-function applyTransform() {
-  const carousel = track.parentElement; // .carousel
-  const carouselWidth = carousel.getBoundingClientRect().width;
+  function animate() {
+    if (!animating) return;
+    currentOffset += (targetOffset - currentOffset) * 0.25; 
+    track.style.transform = `translateX(${-currentOffset}px)`;
 
-  const cards = Array.from(track.querySelectorAll(".carousel__card"));
-  if (!cards.length) return;
-
-  const cardWidth = cards[0].getBoundingClientRect().width + 16; // with gap
-  const totalWidth = cards.length * cardWidth;
-
-  // center offset
-  const baseOffset = Math.max(0, (carouselWidth - totalWidth) / 2);
-
-  const offset = index * cardWidth * groupSize;
-  track.style.transform = `translateX(${baseOffset - offset}px)`;
-}
-
-function goRight() {
-  const cardsLength = measure();
-  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
-  index = index < maxIndex ? index + 1 : 0; // wrap
-  applyTransform();
-}
-
-function goLeft() {
-  const cardsLength = measure();
-  const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
-  index = index > 0 ? index - 1 : maxIndex; // wrap
-  applyTransform();
-}
-
-
-
-
-  function resetAutoplay() {
-    clearTimeout(autoplayTimer);
-    autoplayTimer = setTimeout(goRight, 10000);
+    if (Math.abs(targetOffset - currentOffset) > 0.5) {
+      requestAnimationFrame(animate);
+    } else {
+      currentOffset = targetOffset;
+      animating = false;
+    }
   }
 
-  btnRight.addEventListener("click", () => {
-    goRight();
-    resetAutoplay();
-  });
-  btnLeft.addEventListener("click", () => {
-    goLeft();
-    resetAutoplay();
-  });
+  function applyTransform() {
+    targetOffset = index * cardWidth;
+    if (!animating) {
+      animating = true;
+      requestAnimationFrame(animate);
+    }
+  }
 
-  track.addEventListener(
-    "wheel",
-    (e) => {
-      e.preventDefault();
-      if (scrollCooldown) return;
-      scrollCooldown = true;
+  function goRight() {
+    const cardsLength = measure();
+    const visibleCards = Math.floor(track.parentElement.getBoundingClientRect().width / cardWidth);
+    const maxIndex = cardsLength - visibleCards;
 
-      clearTimeout(autoplayTimer);
+    if (index < maxIndex) {
+      index++;
+      applyTransform();
+    }
+  }
 
-      if (e.deltaY > 0) goRight();
-      else goLeft();
+  function goLeft() {
+    if (index > 0) {
+      index--;
+      applyTransform();
+    }
+  }
 
-      autoplayTimer = setTimeout(resetAutoplay, 3000);
+let autoplayTimer;
+let autoplayDirection = 1; 
 
-      setTimeout(() => {
-        scrollCooldown = false;
-      }, 400);
-    },
-    { passive: false }
-  );
+function startAutoplay() {
+  clearInterval(autoplayTimer);
+  autoplayTimer = setInterval(() => {
+    const cardsLength = measure();
+    const visibleCards = Math.floor(track.parentElement.getBoundingClientRect().width / cardWidth);
+    const maxIndex = cardsLength - visibleCards;
 
-  track.addEventListener("mouseenter", () => clearTimeout(autoplayTimer));
-  track.addEventListener("mouseleave", resetAutoplay);
+    if (autoplayDirection === 1) {
+      if (index < maxIndex) {
+        index++;
+      } else {
+        autoplayDirection = -1; 
+        index--;
+      }
+    } else {
+      if (index > 0) {
+        index--;
+      } else {
+        autoplayDirection = 1; 
+        index++;
+      }
+    }
 
-  measure();
-  applyTransform();
+    applyTransform();
+  }, 3000); 
+}
+
+function resetAutoplay() {
+  clearInterval(autoplayTimer);
+  startAutoplay();
+}
+
+
+btnRight.addEventListener("click", () => {
+  goRight();
   resetAutoplay();
+});
+
+btnLeft.addEventListener("click", () => {
+  goLeft();
+  resetAutoplay();
+});
+
+track.addEventListener(
+  "wheel",
+  (e) => {
+    e.preventDefault();
+    if (scrollCooldown) return;
+    scrollCooldown = true;
+
+    clearInterval(autoplayTimer);
+
+    if (e.deltaY > 0) goRight();
+    else goLeft();
+
+    startAutoplay(); 
+
+    setTimeout(() => {
+      scrollCooldown = false;
+    }, 300);
+  },
+  { passive: false }
+);
+
+track.addEventListener("mouseenter", () => clearInterval(autoplayTimer));
+track.addEventListener("mouseleave", startAutoplay);
+
+measure();
+applyTransform();
+startAutoplay();
+  
 
   window.addEventListener("resize", () => {
     const cardsLength = measure();
-    const maxIndex = Math.ceil(cardsLength / groupSize) - 1;
+    const visibleCards = Math.floor(track.parentElement.getBoundingClientRect().width / cardWidth);
+    const maxIndex = cardsLength - visibleCards;
     if (index > maxIndex) index = maxIndex;
     applyTransform();
   });
 }
 
 document.addEventListener("DOMContentLoaded", initSlider);
+
 
 
 
