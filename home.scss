@@ -573,16 +573,16 @@ html {
   }
 }
 
-// ==========================
+// ========================== 
 // Phone (<=480px)
 // ==========================
 @media (max-width: 480px) {
-  .statistics__stats {
-    flex-wrap: wrap;
-  }
-  .statistics__stat {
-    flex: 0 0 calc(50% - 1rem);
-  }
+  // .statistics__stats {
+  //   flex-wrap: wrap;
+  // }
+  // .statistics__stat {
+  //   flex: 0 0 calc(50% - 1rem);
+  // }
 
   .service__item {
     width: clamp(10rem, 34vw, 13rem);
