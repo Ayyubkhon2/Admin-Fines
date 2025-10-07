@@ -5,16 +5,16 @@ body {
   background-position: 0 0;
 
   font-family: mulish;
-  color: #ffffff;   
-  width: 100%;    
-  min-height: 100vh; 
-  height: 100%; 
-  display: flex; 
+  color: #ffffff;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
   flex-direction: column;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   transform: none !important;
-} 
+}
 
 input,
 textarea,
@@ -234,22 +234,21 @@ a {
 .layout {
   min-height: auto;
   background-color: #fff;
-  margin: 0 auto;
+  margin: 0 auto; 
   border-radius: 1rem;
   background-image: url("assets/pattern.svg");
-  background-repeat: repeat;
+  background-repeat: repeat;  
   background-size: 76px 76px;
   background-position: 0 0;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: clamp(2rem, 6vw, 4rem);
   border: 1px solid rgba(0, 123, 255, 0.25);
   box-shadow: 0 4px 4px rgba(0, 123, 255, 0.15);
 }
 
 .switcher {
   width: 100%;
-  // min-height: 20.375rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -299,6 +298,7 @@ a {
 
 .variant {
   display: none;
+  position: relative;
   &--active {
     display: block;
   }
@@ -356,6 +356,26 @@ a {
     flex-direction: column;
     gap: 5rem;
   }
+  &__legend {
+    width: clamp(10rem, 34vw, 18rem);
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 45, 75, 0.9);
+    border-radius: 1rem;
+    gap: clamp(0.5rem, 1.5vw, 2rem);
+    padding: clamp(0.5rem, 1.5vw, 2rem);
+    border: 2px solid rgba(72, 191, 108, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(26, 110, 209, 0.35);
+    position: absolute;
+    right: clamp(1rem, 3vw, 2rem);
+    top: -1rem;
+  }
+  &__row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
 }
 
 .tooltip__header {
@@ -367,7 +387,7 @@ a {
 .tooltip__stats {
   display: flex;
   justify-content: space-between;
-      gap: clamp(0.25rem, 0.5vw, 1rem);
+  gap: clamp(0.25rem, 0.5vw, 1rem);
   font-size: clamp(0.75rem, 2vw, 1.25rem);
 }
 
@@ -395,14 +415,17 @@ a {
 .tooltip__number1 {
   font-weight: 700;
   color: #ffeb3b;
+  font-size: clamp(0.5rem, 2vw, 1rem);
 }
 .tooltip__number2 {
   font-weight: 700;
   color: #40c4ff;
+  font-size: clamp(0.5rem, 2vw, 1rem);
 }
 .tooltip__number3 {
   font-weight: 700;
   color: #ff6f00;
+  font-size: clamp(0.5rem, 2vw, 1rem);
 }
 
 .carousel {
@@ -436,7 +459,6 @@ a {
     transition: transform 0.6s ease-out;
     width: 100%;
     height: 18.75rem;
-    // overflow-x: visible;
     scroll-behavior: smooth;
   }
   &__card {
@@ -447,7 +469,7 @@ a {
     flex-direction: column;
     align-items: center;
     flex: 0 0 auto;
-    height: clamp(13rem, 48vw, 14rem);
+    height: clamp(12.5rem, 43vw, 14rem);
     transition: all 0.3s;
     box-sizing: border-box;
     width: clamp(12rem, 40vw, 22rem);
@@ -568,12 +590,12 @@ html {
   .statistics__stat-label {
     font-size: clamp(0.75rem, 2.5vw, 1rem);
   }
-  .carousel__track{
+  .carousel__track {
     height: clamp(16rem, 60vw, 18rem);
   }
 }
 
-// ========================== 
+// ==========================
 // Phone (<=480px)
 // ==========================
 @media (max-width: 480px) {

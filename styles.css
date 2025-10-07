@@ -194,7 +194,7 @@ html {
   height: 0.125rem;
   width: 100%;
   background: #fff;
-  color: var(--color-NAPP);
+  color: #0056b3;
   border-radius: 0.125rem;
   transition: all 0.3s ease;
   transform-origin: center;
@@ -213,7 +213,11 @@ html {
 .dropdown {
   display: none;
   flex-direction: column;
-  background: #ffffff;
+  background: #fff;
+  border: 1px solid rgba(0, 123, 255, 0.35);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  box-shadow: 6px 6px 4px rgba(0, 123, 255, 0.25);
   position: absolute;
   top: 3.75rem;
   right: 1.25rem;
@@ -222,13 +226,14 @@ html {
   min-width: 150px;
 }
 .dropdown a {
-  color: var(--color-NAPP);
+  color: #0056b3;
   padding: 0.75rem 1rem;
   text-decoration: none;
   transition: background 0.3s;
 }
 .dropdown a:hover {
   background: #d0d1d7;
+  color: #ffffff;
   transition: ease-out 0.3s;
   transform: scale(1.02);
 }
@@ -313,7 +318,6 @@ html {
 
 /* Footer */
 .footer {
-  background: rgba(255, 255, 255, 0.1);
   color: #0056b3;
   text-align: center;
   padding: 1.25rem;
