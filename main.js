@@ -3,6 +3,7 @@ const navItems = document.querySelectorAll(".header__nav-item");
 const navUnderline = document.querySelector(".header__nav-underline");
 
 function moveUnderline(item) {
+  if (!item || !navUnderline) return;
   const rect = item.getBoundingClientRect();
   const parentRect = item.parentElement.getBoundingClientRect();
 
@@ -35,11 +36,28 @@ navItems.forEach((item) => {
   });
 });
 
-// Optional: recalc on resize
+// Recalc on resize
 window.addEventListener("resize", () => {
   const activeItem = document.querySelector(".header__nav-item--active");
   if (activeItem) moveUnderline(activeItem);
 });
+
+// 👇 NEW: Watch for text/language updates in nav
+const nav = document.querySelector(".header__nav");
+if (nav) {
+  const observer = new MutationObserver(() => {
+    const activeItem = document.querySelector(".header__nav-item--active");
+    if (activeItem) {
+      requestAnimationFrame(() => moveUnderline(activeItem)); // wait till layout updates
+    }
+  });
+  observer.observe(nav, {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  });
+}
+
 
 
 // --------------- Toggle between variants ---------------
