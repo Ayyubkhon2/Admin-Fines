@@ -332,12 +332,12 @@ html {
   border: 1px solid rgba(0, 123, 255, 0.35);
   backdrop-filter: blur(1px);
   border-radius: 16px;
-}
+} 
 
 /* Reveal animation*/
 .reveal {
   opacity: 0;
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-out;
   &-bottom {
     transform: translateY(30px);
   }

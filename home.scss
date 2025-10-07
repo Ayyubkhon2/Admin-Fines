@@ -497,7 +497,7 @@ a {
   &__icon {
     width: clamp(4rem, 8vw, 6rem);
     height: clamp(4rem, 8vw, 6rem);
-    padding: 1rem;
+    padding: 1rem; 
     border-radius: 50%;
     background-color: #e0eeff;
     display: flex;
@@ -510,6 +510,7 @@ a {
     width: clamp(2rem, 6vw, 4.5rem);
     height: clamp(2rem, 6vw, 4.5rem);
     border-radius: 1rem;
+    mix-blend-mode: multiply;
   }
 
   &__btn-box {

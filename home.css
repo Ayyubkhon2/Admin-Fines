@@ -495,6 +495,7 @@ a {
   width: clamp(2rem, 6vw, 4.5rem);
   height: clamp(2rem, 6vw, 4.5rem);
   border-radius: 1rem;
+  mix-blend-mode: multiply;
 }
 .carousel__btn-box {
   display: flex;
