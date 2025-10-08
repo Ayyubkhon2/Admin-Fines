@@ -59,65 +59,6 @@ if (nav) {
 }
 
 
-
-// --------------- Toggle between variants ---------------
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".switcher__btn");
-  const variants = document.querySelectorAll(".variant");
-
-  variants.forEach((v) => {
-    if (!v.classList.contains("variant--active")) {
-      v.style.display = "none";
-    }
-  });
-
-  // Handle clicks criteria.html
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const targetId = button.dataset.variant;
-      const target = document.getElementById(targetId);
-
-      if (!target) return;
-
-      buttons.forEach((b) => b.classList.remove("switcher__btn--active"));
-
-      variants.forEach((v) => {
-        v.classList.remove("variant--active");
-        v.style.display = "none";
-      });
-
-      button.classList.add("switcher__btn--active");
-      target.classList.add("variant--active");
-      target.style.display = "block";
-    });
-  });
-
-  // Handle navigation ( #finance, #corporate, #investment)
-  const hash = window.location.hash.substring(1); 
-  if (hash) {
-    const target = document.getElementById(hash);
-    const button = document.querySelector(`[data-variant="${hash}"]`);
-
-    if (target) {
-   
-      variants.forEach((v) => {
-        v.classList.remove("variant--active");
-        v.style.display = "none";
-      });
-    
-      target.classList.add("variant--active");
-      target.style.display = "block";
-      
-      if (button) {
-        buttons.forEach((b) => b.classList.remove("switcher__btn--active"));
-        button.classList.add("switcher__btn--active");
-      }
-    }
-  }
-});
-
-
-
 /* Reveal animation */
 const reveals = document.querySelectorAll(".reveal");
 

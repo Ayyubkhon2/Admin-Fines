@@ -51,6 +51,38 @@ document.addEventListener("DOMContentLoaded", () => {
   observeCounters(".statistics");
 });
 
+
+
+// --------------- Simple Variant Switcher (no IDs) ---------------
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".switcher__btn");
+  const variants = document.querySelectorAll(".variant");
+
+  // Hide all inactive variants
+  variants.forEach(v => {
+    v.style.display = v.classList.contains("variant--active") ? "block" : "none";
+  });
+
+  // Match by index
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      // Update button states
+      buttons.forEach(b => b.classList.remove("switcher__btn--active"));
+      button.classList.add("switcher__btn--active");
+
+      // Update variant visibility
+      variants.forEach((v, i) => {
+        v.classList.remove("variant--active");
+        v.style.display = i === index ? "block" : "none";
+      });
+
+      variants[index].classList.add("variant--active");
+    });
+  });
+});
+
+
+
 // Map
 document.addEventListener("DOMContentLoaded", () => {
   const provinces = document.querySelectorAll(".map__province");

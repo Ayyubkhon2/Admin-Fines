@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+    />
+    <link rel="stylesheet" href="services.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Logo -->
+        <div class="header__container">
+            <div class="header__left">
+                <a href="index.html" class="header__logo">
+                    <img src="assets/logo-img.png" alt="" class="header__logo-img" />
+                    <div class="header__logo-text--wrap">
+                        <p class="header__logo-bold">NAPP</p>
+                        <p class="header__logo-subtitle">NATIONAL AGENCY</p>
+                        <p class="header__logo-description">OF PERSPECTIVE PROJECTS</p>
+                    </div>
+                </a>
+
+                <!-- Nav -->
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="index.html"><span data-i18n="nav1"></span></a>
+                        </li>
+                        <li class="header__nav-item header__nav-item--active">
+                            <a href="services.html"><span data-i18n="nav2"></span></a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href=""><span data-i18n="nav3"></span></a>
+                        </li>
+                        <div class="header__nav-underline"></div>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Language -->
+            <div class="header__right">
+                <div class="header__language language-dropdown">
+                    <button class="language-dropdown__btn">
+              <span class="language-dropdown__current">Русский</span>
+            </button>
+                    <ul class="language-dropdown__menu">
+                        <li class="language-dropdown__option" data-lang="ru">
+                            <img class="language-dropdown__flag" src="assets/ru.png" alt="RU" /> Русский
+                        </li>
+                        <li class="language-dropdown__option" data-lang="uz">
+                            <img class="language-dropdown__flag" src="assets/uz.png" alt="UZ" /> O'zbekcha
+                        </li>
+                        <li class="language-dropdown__option" data-lang="en">
+                            <img class="language-dropdown__flag" src="assets/en.png" alt="EN" /> English
+                        </li>
+                    </ul>
+                </div>
+                <div class="header__login magnetic-button">
+                    <img src="assets/login-icon.png" alt="" />
+                    <p class="header__login-text" data-i18n="cabinet"></p>
+                </div>
+
+                <!-- Burger -->
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Dropdown -->
+                <div class="dropdown" id="dropdown">
+                    <a href="index.html" data-i18n="nav1"></a>
+                    <a href="services.html" data-i18n="nav2"></a>
+                    <a href="service.html" data-i18n="nav3"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Variant services -->
+    <div class="services reveal reveal-left">
+        <h2 class="services__title" data-i18n="service"></h2>
+
+        <div class="services__box">
+            <button data-variant="fines" class="services__btn">
+              <svg
+                class="services__icon"
+                viewBox="0 0 20 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.20833 17.6667H14.7917M4.25 4.25L10 3.29167L15.75 4.25M4.25 4.25L7.125 10C7.125 10.7625 6.8221 11.4938 6.28293 12.0329C5.74376 12.5721 5.0125 12.875 4.25 12.875C3.4875 12.875 2.75624 12.5721 2.21707 12.0329C1.6779 11.4938 1.375 10.7625 1.375 10L4.25 4.25ZM15.75 4.25L18.625 10C18.625 10.7625 18.3221 11.4938 17.7829 12.0329C17.2438 12.5721 16.5125 12.875 15.75 12.875C14.9875 12.875 14.2562 12.5721 13.7171 12.0329C13.1779 11.4938 12.875 10.7625 12.875 10L15.75 4.25ZM10 1.375V17.6667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span data-i18n="fines"></span>
+            </button>
+
+            <button data-variant="sanctions" class="services__btn">
+              <svg
+                class="services__icon"
+                viewBox="0 0 24 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.7573 0.509277L17.0194 0.08345L16.8852 0.000889689L16.728 0.0101402L16.7573 0.509277ZM8.25413 1.00948L8.22477 0.51034L8.0516 0.520527L7.92195 0.635772L8.25413 1.00948ZM3.75243 5.01098L3.42025 4.63727L3.32039 4.72604L3.27812 4.8528L3.75243 5.01098ZM2.90803 7.54299L3.15318 7.97876L3.32132 7.88418L3.38235 7.70117L2.90803 7.54299ZM0.740234 8.76249L0.495087 8.32671L0.240234 8.47008V8.76249H0.740234ZM0.740234 13.2642H0.240234V13.5566L0.495099 13.7L0.740234 13.2642ZM4.74173 15.5151L4.4966 15.9509L4.74173 16.0888L4.98687 15.9509L4.74173 15.5151ZM8.74333 13.2642L8.98846 13.7L9.24333 13.5566V13.2642H8.74333ZM8.74333 10.9803L9.21767 10.8222L8.24333 10.9803H8.74333ZM8.75433 11.0133L8.28 11.1714L8.35462 11.3953L8.57484 11.48L8.75433 11.0133ZM15.2567 13.5143L15.0772 13.981L15.2397 14.0434L15.4059 13.9915L15.2567 13.5143ZM23.2598 11.0133L23.409 11.4905L23.7598 11.3809V11.0133H23.2598ZM23.2598 4.51088H23.7598V4.23148L23.5219 4.08505L23.2598 4.51088ZM14.7566 9.51279L14.6586 10.0031L15.0331 10.078L15.2039 9.73638L14.7566 9.51279ZM9.75463 8.51239L9.85269 8.0221L9.6496 7.98148L9.47727 8.09637L9.75463 8.51239ZM8.74333 9.18669H8.24333V10.121L9.02071 9.60269L8.74333 9.18669ZM8.74333 8.76249H9.24333V8.47007L8.98847 8.3267L8.74333 8.76249ZM5.15093 6.74169V6.24169H3.24224L4.9058 7.17747L5.15093 6.74169ZM5.16493 6.74169V7.24169H5.31687L5.44313 7.15715L5.16493 6.74169ZM9.24353 4.01068V3.51068H9.09182L8.96569 3.59498L9.24353 4.01068ZM14.7456 4.01068L15.1736 3.75205L15.0277 3.51068H14.7456V4.01068ZM16.2571 6.51159L16.7044 6.73518L16.8276 6.48875L16.6851 6.25296L16.2571 6.51159ZM5.75313 9.48869C6.02928 9.48869 6.25313 9.26483 6.25313 8.98869C6.25313 8.71254 6.02928 8.48869 5.75313 8.48869V8.98869V9.48869ZM3.75233 8.98869V8.48869C3.56295 8.48869 3.38982 8.59569 3.30512 8.76508L3.75233 8.98869ZM3.25213 9.98909L2.80492 9.76548C2.73454 9.90625 2.73454 10.0719 2.80493 10.2127L3.25213 9.98909ZM3.75233 10.9894L3.30513 11.213C3.38983 11.3824 3.56296 11.4894 3.75233 11.4894V10.9894ZM5.75313 10.9894L6.20035 10.7658C6.11565 10.5964 5.94252 10.4894 5.75313 10.4894V10.9894ZM6.25333 11.9898L6.70055 12.2134C6.77093 12.0726 6.77093 11.9069 6.70055 11.7662L6.25333 11.9898ZM5.75313 12.9902V13.4902C5.94252 13.4902 6.11565 13.3832 6.20035 13.2138L5.75313 12.9902ZM3.75233 12.4902C3.47619 12.4902 3.25233 12.714 3.25233 12.9902C3.25233 13.2663 3.47619 13.4902 3.75233 13.4902V12.9902V12.4902ZM4.25273 8.98869C4.25273 9.26483 4.47659 9.48869 4.75273 9.48869C5.02888 9.48869 5.25273 9.26483 5.25273 8.98869H4.75273H4.25273ZM5.25273 8.48849C5.25273 8.21235 5.02888 7.98849 4.75273 7.98849C4.47659 7.98849 4.25273 8.21235 4.25273 8.48849H4.75273H5.25273ZM4.25273 13.4904C4.25273 13.7665 4.47659 13.9904 4.75273 13.9904C5.02888 13.9904 5.25273 13.7665 5.25273 13.4904H4.75273H4.25273ZM5.25273 12.9902C5.25273 12.714 5.02888 12.4902 4.75273 12.4902C4.47659 12.4902 4.25273 12.714 4.25273 12.9902H4.75273H5.25273ZM9.25433 12.9901C9.25433 12.7139 9.03048 12.4901 8.75433 12.4901C8.47819 12.4901 8.25433 12.7139 8.25433 12.9901H8.75433H9.25433ZM8.75433 13.2402L8.99947 13.676C9.1569 13.5874 9.25433 13.4208 9.25433 13.2402H8.75433ZM4.75273 15.4911L4.5076 15.9269C4.65981 16.0125 4.84566 16.0125 4.99786 15.9269L4.75273 15.4911ZM0.751234 13.2402L0.251236 13.2414C0.251679 13.4216 0.349046 13.5876 0.506099 13.676L0.751234 13.2402ZM4.74173 6.51159L4.9769 6.07034C4.82635 5.99011 4.64528 5.99217 4.4966 6.0758L4.74173 6.51159ZM7.22467 8.40143C7.46837 8.53131 7.77121 8.43904 7.90108 8.19535C8.03096 7.95165 7.93869 7.64882 7.695 7.51894L7.45983 7.96019L7.22467 8.40143ZM4.88709 6.32099C4.65751 6.47444 4.59579 6.78494 4.74924 7.01453C4.90268 7.24411 5.21319 7.30583 5.44277 7.15239L5.16493 6.73669L4.88709 6.32099ZM8.25413 9.51279L7.97677 9.09677C7.78917 9.22185 7.70849 9.45701 7.7798 9.67091L8.25413 9.51279ZM16.7573 0.509277L16.728 0.0101402L8.22477 0.51034L8.25413 1.00948L8.2835 1.50861L16.7867 1.00841L16.7573 0.509277ZM8.25413 1.00948L7.92195 0.635772L3.42025 4.63727L3.75243 5.01098L4.08462 5.38468L8.58632 1.38318L8.25413 1.00948ZM3.75243 5.01098L3.27812 4.8528L2.43371 7.38481L2.90803 7.54299L3.38235 7.70117L4.22675 5.16916L3.75243 5.01098ZM2.90803 7.54299L2.66289 7.10721L0.495087 8.32671L0.740234 8.76249L0.985382 9.19826L3.15318 7.97876L2.90803 7.54299ZM0.740234 8.76249H0.240234V13.2642H0.740234H1.24023V8.76249H0.740234ZM0.740234 13.2642L0.495099 13.7L4.4966 15.9509L4.74173 15.5151L4.98687 15.0793L0.98537 12.8284L0.740234 13.2642ZM4.74173 15.5151L4.98687 15.9509L8.98846 13.7L8.74333 13.2642L8.4982 12.8284L4.4966 15.0793L4.74173 15.5151ZM8.74333 13.2642H9.24333V10.9803H8.74333H8.24333V13.2642H8.74333ZM8.74333 10.9803L8.26899 11.1384L8.27999 11.1714L8.75433 11.0133L9.22867 10.8552L9.21767 10.8222L8.74333 10.9803ZM8.75433 11.0133L8.57484 11.48L15.0772 13.981L15.2567 13.5143L15.4362 13.0476L8.93383 10.5466L8.75433 11.0133ZM15.2567 13.5143L15.4059 13.9915L23.409 11.4905L23.2598 11.0133L23.1107 10.536L15.1076 13.037L15.2567 13.5143ZM23.2598 11.0133H23.7598V4.51088H23.2598H22.7598V11.0133H23.2598ZM23.2598 4.51088L23.5219 4.08505L17.0194 0.08345L16.7573 0.509277L16.4953 0.935105L22.9978 4.9367L23.2598 4.51088ZM14.7566 9.51279L14.8547 9.0225L9.85269 8.0221L9.75463 8.51239L9.65658 9.00268L14.6586 10.0031L14.7566 9.51279ZM9.75463 8.51239L9.47726 8.09638L8.46596 8.77068L8.74333 9.18669L9.02071 9.60269L10.032 8.92839L9.75463 8.51239ZM8.74333 9.18669H9.24333V8.76249H8.74333H8.24333V9.18669H8.74333ZM8.74333 8.76249L8.98847 8.3267L5.39607 6.3059L5.15093 6.74169L4.9058 7.17747L8.4982 9.19827L8.74333 8.76249ZM5.15093 6.74169V7.24169H5.16493V6.74169V6.24169H5.15093V6.74169ZM5.16493 6.74169L5.44313 7.15715L9.52173 4.42614L9.24353 4.01068L8.96534 3.59521L4.88674 6.32622L5.16493 6.74169ZM9.24353 4.01068V4.51068H14.7456V4.01068V3.51068H9.24353V4.01068ZM14.7456 4.01068L14.3177 4.2693L15.8292 6.77021L16.2571 6.51159L16.6851 6.25296L15.1736 3.75205L14.7456 4.01068ZM16.2571 6.51159L15.8099 6.28799L14.3094 9.28919L14.7566 9.51279L15.2039 9.73638L16.7044 6.73518L16.2571 6.51159ZM8.74333 8.76249H8.24333V13.2642H8.74333H9.24333V8.76249H8.74333ZM5.75313 8.98869V8.48869H3.75233V8.98869V9.48869H5.75313V8.98869ZM3.75233 8.98869L3.30512 8.76508L2.80492 9.76548L3.25213 9.98909L3.69935 10.2127L4.19955 9.21229L3.75233 8.98869ZM3.25213 9.98909L2.80493 10.2127L3.30513 11.213L3.75233 10.9894L4.19954 10.7658L3.69934 9.76546L3.25213 9.98909ZM3.75233 10.9894V11.4894H5.75313V10.9894V10.4894H3.75233V10.9894ZM5.75313 10.9894L5.30592 11.213L5.80612 12.2134L6.25333 11.9898L6.70055 11.7662L6.20035 10.7658L5.75313 10.9894ZM6.25333 11.9898L5.80612 11.7662L5.30592 12.7666L5.75313 12.9902L6.20035 13.2138L6.70055 12.2134L6.25333 11.9898ZM5.75313 12.9902V12.4902H3.75233V12.9902V13.4902H5.75313V12.9902ZM4.75273 8.98869H5.25273V8.48849H4.75273H4.25273V8.98869H4.75273ZM4.75273 13.4904H5.25273V12.9902H4.75273H4.25273V13.4904H4.75273ZM8.75433 12.9901H8.25433V13.2402H8.75433H9.25433V12.9901H8.75433ZM8.75433 13.2402L8.5092 12.8044L4.5076 15.0553L4.75273 15.4911L4.99786 15.9269L8.99947 13.676L8.75433 13.2402ZM4.75273 15.4911L4.99787 15.0553L0.99637 12.8044L0.751234 13.2402L0.506099 13.676L4.5076 15.9269L4.75273 15.4911ZM0.751234 13.2402L1.25123 13.239L1.24023 8.76126L0.740234 8.76249L0.240236 8.76371L0.251236 13.2414L0.751234 13.2402ZM0.740234 8.76249L0.98537 9.19827L4.98687 6.94737L4.74173 6.51159L4.4966 6.0758L0.495099 8.3267L0.740234 8.76249ZM4.74173 6.51159L4.50657 6.95283L7.22467 8.40143L7.45983 7.96019L7.695 7.51894L4.9769 6.07034L4.74173 6.51159ZM5.16493 6.73669L5.44277 7.15239L9.52137 4.42638L9.24353 4.01068L8.96569 3.59498L4.88709 6.32099L5.16493 6.73669ZM9.75463 8.51239L9.47727 8.09637L7.97677 9.09677L8.25413 9.51279L8.5315 9.9288L10.032 8.9284L9.75463 8.51239ZM8.25413 9.51279L7.7798 9.67091L8.28 11.1714L8.75433 11.0133L9.22867 10.8552L8.72847 9.35466L8.25413 9.51279Z"
+                />
+              </svg>
+
+              <span data-i18n="sanctions"></span>
+            </button>
+
+            <button data-variant="calculator" class="services__btn">
+              <svg
+                class="services__icon"
+                viewBox="0 0 20 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.375 5.53125V21.4875C1.37463 21.6573 1.40777 21.8256 1.47253 21.9826C1.5373 22.1396 1.63241 22.2823 1.75241 22.4025C1.87243 22.5227 2.01497 22.6179 2.17189 22.683C2.32879 22.748 2.497 22.7813 2.66684 22.7812H17.3332C17.503 22.7813 17.6712 22.748 17.8281 22.683C17.985 22.6179 18.1276 22.5227 18.2476 22.4025C18.3676 22.2823 18.4628 22.1396 18.5274 21.9826C18.5922 21.8256 18.6254 21.6573 18.625 21.4875V5.53125M1.375 5.53125H18.625M1.375 5.53125L1.375 2.65625C1.375 2.27501 1.52646 1.90936 1.79604 1.63978C2.06562 1.3702 2.43126 1.21875 2.8125 1.21875H17.1875C17.5687 1.21875 17.9344 1.3702 18.204 1.63978C18.4736 1.90936 18.625 2.27501 18.625 2.65625L18.625 5.53125M10 5.53125V22.7812M1.375 14.1562H18.625M5.6875 8.40625V11.2813M4.25 9.84375H7.125M7.125 17.0312L4.25 19.9062M4.25 17.0312L7.125 19.9062M12.875 9.84375H15.75M12.875 17.0312H15.75M12.875 19.9063H15.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <span data-i18n="calculator"></span>
+            </button>
+
+            <button data-variant="appeal" class="services__btn">
+              <svg
+                class="services__icon"
+                viewBox="0 0 22 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.16012 16.9201H21.0001V1.08008H3.36012V2.04008L12.0001 10.0801L21.0001 2.04008M0.120117 7.92008H4.92012M0.120117 12.9601H7.92012"
+                />
+              </svg>
+
+              <span data-i18n="appeal"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Variants -->
+    <div id="fines" class="services__variant">
+
+        <div class="services__container">
+            <p class="services__subtitle" data-i18n="subtitle"></p>
+
+
+
+
+            <div class="mini-services">
+                <div class="mini-services__box">
+                    <button data-mini="passport" class="mini-services__btn">
+              <span data-i18n="passport"></span>
+            </button>
+
+                    <button data-mini="receipt" class="mini-services__btn">
+              <span data-i18n="receipt"></span>
+            </button>
+
+                    <button data-mini="protocol" class="mini-services__btn">
+              <span data-i18n="protocol"></span>
+            </button>
+
+                </div>
+            </div>
+
+            <!-- Variants -->
+            <div id="passport" class="mini-services__variant">
+                <div class="mini-services__container">
+                    <div class="mini-services__row">
+                        <div class="mini-services__input">
+                            <span data-i18n="passport_reg"></span>
+                        </div>
+                        <div class="mini-services__input">
+                            <span data-i18n="passport_number"></span>
+                        </div>
+                        <div class="mini-services__searcharea">
+                            <div class="mini-services__search">
+                                <span data-i18n="search"></span>
+                                <img class="mini-services__searchicon" src="assets/searchicon.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mini-services__message-board">
+                        <div class="mini-services__message">
+                            <img class="mini-services__warning" src="assets/warning.png" alt="">
+                            <span data-i18n="warning"></span>
+                        </div>
+                        <div class="mini-services__message-box">
+                            <div class="mini-services__column">
+                                <span class="mini-services__message-title" data-i18n="violation_title"></span>
+                                <span class="mini-services__message-text" data-i18n="violation_text"></span>
+                            </div>
+                            <div class="mini-services__column">
+                                <span class="mini-services__message-title">№</span>
+                                <span class="mini-services__message-text">2383</span>
+                            </div>
+                            <div class="mini-services__column">
+                                <span class="mini-services__message-title" data-i18n="term_title"></span>
+                                <span class="mini-services__message-text" data-i18n="term_text"></span>
+                            </div>
+                            <div class="mini-services__download-box">
+                                <img class="mini-services__download" src="assets/download.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div id="receipt" class="mini-services__variant"></div>
+            <div id="protocol" class="mini-services__variant"></div>
+        </div>
+        </section>
+
+
+
+
+
+    </div>
+
+    </div>
+
+    <div id="sanctions" class="services__variant"></div>
+
+    <div id="calculator" class="services__variant"></div>
+
+    <div id="appeal" class="services__variant"></div>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-i18n="footer"></p>
+    </footer>
+
+    <script src="https://unpkg.com/i18next@23.7.6/dist/umd/i18next.min.js"></script>
+    <script src="main.js"></script>
+    <script src="services.js"></script>
+</body>
+
+</html>
