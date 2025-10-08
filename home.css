@@ -28,22 +28,24 @@ a {
 }
 
 .hero {
+  position: relative;
+  color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
   height: auto;
   border: 2px solid rgba(0, 123, 255, 0.2);
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/hero-img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 9.25rem auto clamp(2rem, 5vw, 4rem);
   padding: clamp(2rem, 5vw, 5rem) clamp(1.75rem, 3vw, 3rem);
   gap: clamp(1.25rem, 3vw, 3rem);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
 }
 .hero__text {
-  color: rgba(0, 86, 179, 0.7);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   text-align: center;

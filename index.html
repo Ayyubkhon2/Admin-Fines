@@ -1,191 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
     />
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Header -->
     <header class="header">
-      <!-- Logo -->
-      <div class="header__container">
-        <div class="header__left">
-          <div class="header__logo">
-            <img src="assets/logo-img.png" alt="" class="header__logo-img" />
-            <div class="header__logo-text--wrap">
-              <p class="header__logo-bold">NAPP</p>
-              <p class="header__logo-subtitle">NATIONAL AGENCY</p>
-              <p class="header__logo-description">OF PERSPECTIVE PROJECTS</p>
+        <!-- Logo -->
+        <div class="header__container">
+            <div class="header__left">
+                <div class="header__logo">
+                    <img src="assets/logo-img.png" alt="" class="header__logo-img" />
+                    <div class="header__logo-text--wrap">
+                        <p class="header__logo-bold">NAPP</p>
+                        <p class="header__logo-subtitle">NATIONAL AGENCY</p>
+                        <p class="header__logo-description">OF PERSPECTIVE PROJECTS</p>
+                    </div>
+                </div>
+
+                <!-- Nav -->
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item header__nav-item--active">
+                            <a href="index.html"><span data-i18n="nav1"></span></a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="services.html"><span data-i18n="nav2"></span></a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href=""><span data-i18n="nav3"></span></a>
+                        </li>
+                        <div class="header__nav-underline"></div>
+                    </ul>
+                </nav>
             </div>
-          </div>
 
-          <!-- Nav -->
-          <nav class="header__nav">
-            <ul class="header__nav-list">
-              <li class="header__nav-item header__nav-item--active">
-                <a href="index.html"><span data-i18n="nav1"></span></a>
-              </li>
-              <li class="header__nav-item">
-                <a href="services.html"><span data-i18n="nav2"></span></a>
-              </li>
-              <li class="header__nav-item">
-                <a href=""><span data-i18n="nav3"></span></a>
-              </li>
-              <div class="header__nav-underline"></div>
-            </ul>
-          </nav>
-        </div>
-
-        <!-- Language -->
-        <div class="header__right">
-          <div class="header__language language-dropdown">
-            <button class="language-dropdown__btn">
+            <!-- Language -->
+            <div class="header__right">
+                <div class="header__language language-dropdown">
+                    <button class="language-dropdown__btn">
               <span class="language-dropdown__current">Русский</span>
             </button>
-            <ul class="language-dropdown__menu">
-              <li class="language-dropdown__option" data-lang="ru">
-                <img
-                  class="language-dropdown__flag"
-                  src="assets/ru.png"
-                  alt="RU"
-                />
-                Русский
-              </li>
-              <li class="language-dropdown__option" data-lang="uz">
-                <img
-                  class="language-dropdown__flag"
-                  src="assets/uz.png"
-                  alt="UZ"
-                />
-                O'zbekcha
-              </li>
-              <li class="language-dropdown__option" data-lang="en">
-                <img
-                  class="language-dropdown__flag"
-                  src="assets/en.png"
-                  alt="EN"
-                />
-                English
-              </li>
-            </ul>
-          </div>
-          <div class="header__login magnetic-button">
-            <img src="assets/login-icon.png" alt="" />
-            <p class="header__login-text" data-i18n="cabinet"></p>
-          </div>
+                    <ul class="language-dropdown__menu">
+                        <li class="language-dropdown__option" data-lang="ru">
+                            <img class="language-dropdown__flag" src="assets/ru.png" alt="RU" /> Русский
+                        </li>
+                        <li class="language-dropdown__option" data-lang="uz">
+                            <img class="language-dropdown__flag" src="assets/uz.png" alt="UZ" /> O'zbekcha
+                        </li>
+                        <li class="language-dropdown__option" data-lang="en">
+                            <img class="language-dropdown__flag" src="assets/en.png" alt="EN" /> English
+                        </li>
+                    </ul>
+                </div>
+                <div class="header__login magnetic-button">
+                    <img src="assets/login-icon.png" alt="" />
+                    <p class="header__login-text" data-i18n="cabinet"></p>
+                </div>
 
-          <!-- Burger -->
-          <div class="burger" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+                <!-- Burger -->
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-          <!-- Dropdown -->
-          <div class="dropdown" id="dropdown">
-            <a href="index.html" data-i18n="nav1"></a>
-            <a href="services.html" data-i18n="nav2"></a>
-            <a href="service.html" data-i18n="nav3"></a>
-          </div>
+                <!-- Dropdown -->
+                <div class="dropdown" id="dropdown">
+                    <a href="index.html" data-i18n="nav1"></a>
+                    <a href="services.html" data-i18n="nav2"></a>
+                    <a href="service.html" data-i18n="nav3"></a>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
 
     <section class="hero reveal reveal-left">
-      <div class="hero__text slide-in-left" data-i18n="hero_text"></div>
-      <img src="assets/hero-img.jpg" class="hero__img" />
+        <div class="hero__text slide-in-left" data-i18n="hero_text"></div>
+        <!-- <img src="assets/hero-img.jpg" class="hero__img" /> -->
     </section>
 
     <section class="statistics">
-      <div class="statistics__container reveal reveal-right">
-        <div class="statistics__title-box">
-          <h1 class="statistics__heading" data-i18n="overview_title"></h1>
-          <p class="statistics__subtitle" data-i18n="overview_subtitle"></p>
-        </div>
+        <div class="statistics__container reveal reveal-right">
+            <div class="statistics__title-box">
+                <h1 class="statistics__heading" data-i18n="overview_title"></h1>
+                <p class="statistics__subtitle" data-i18n="overview_subtitle"></p>
+            </div>
 
-        <div class="statistics__stats">
-          <div class="statistics__stat">
-            <span class="statistics__stat-value" data-target="690"></span>
-            <span
-              class="statistics__stat-label"
-              data-i18n="stats_companies"
-            ></span>
-          </div>
-          <div class="statistics__stat">
-            <span class="statistics__stat-value" data-target="14"></span>
-            <span class="statistics__stat-label" data-i18n="stats_new"></span>
-          </div>
-          <div class="statistics__stat">
-            <span class="statistics__stat-value" data-target="217"></span>
-            <span class="statistics__stat-label" data-i18n="stats_in_a"></span>
-          </div>
-          <div class="statistics__stat">
-            <span class="statistics__stat-value" data-target="193"></span>
-            <span class="statistics__stat-label" data-i18n="stats_in_b"></span>
-          </div>
+            <div class="statistics__stats">
+                <div class="statistics__stat">
+                    <span class="statistics__stat-value" data-target="690"></span>
+                    <span class="statistics__stat-label" data-i18n="stats_companies"></span>
+                </div>
+                <div class="statistics__stat">
+                    <span class="statistics__stat-value" data-target="14"></span>
+                    <span class="statistics__stat-label" data-i18n="stats_new"></span>
+                </div>
+                <div class="statistics__stat">
+                    <span class="statistics__stat-value" data-target="217"></span>
+                    <span class="statistics__stat-label" data-i18n="stats_in_a"></span>
+                </div>
+                <div class="statistics__stat">
+                    <span class="statistics__stat-value" data-target="193"></span>
+                    <span class="statistics__stat-label" data-i18n="stats_in_b"></span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <section class="service">
-      <p class="service__title" data-i18n="service"></p>
-      <div class="service__group">
-        <a href="service.html#finance">
-          <div class="service__item reveal reveal-bottom" data-target="finance">
-            <img class="service__icon" src="assets/scale.png" />
-            <p class="service__text" data-i18n="fine"></p>
-          </div>
-        </a>
+        <p class="service__title" data-i18n="service"></p>
+        <div class="service__group">
+            <a href="service.html#finance">
+                <div class="service__item reveal reveal-bottom" data-target="finance">
+                    <img class="service__icon" src="assets/scale.png" />
+                    <p class="service__text" data-i18n="fine"></p>
+                </div>
+            </a>
 
-        <a href="service.html#corporate">
-          <div
-            class="service__item reveal reveal-bottom"
-            data-target="corporate"
-          >
-            <img class="service__icon" src="assets/hand.png" />
-            <p class="service__text" data-i18n="sanction"></p>
-          </div>
-        </a>
+            <a href="service.html#corporate">
+                <div class="service__item reveal reveal-bottom" data-target="corporate">
+                    <img class="service__icon" src="assets/hand.png" />
+                    <p class="service__text" data-i18n="sanction"></p>
+                </div>
+            </a>
 
-        <a href="service.html#investment">
-          <div
-            class="service__item reveal reveal-bottom"
-            data-target="investment"
-          >
-            <img class="service__icon" src="assets/calculator.png" />
-            <p class="service__text" data-i18n="calculator"></p>
-          </div>
-        </a>
+            <a href="service.html#investment">
+                <div class="service__item reveal reveal-bottom" data-target="investment">
+                    <img class="service__icon" src="assets/calculator.png" />
+                    <p class="service__text" data-i18n="calculator"></p>
+                </div>
+            </a>
 
-        <a href="service.html#investment">
-          <div
-            class="service__item reveal reveal-bottom"
-            data-target="investment"
-          >
-            <img class="service__icon" src="assets/letter.png" />
-            <p class="service__text" data-i18n="appeal"></p>
-          </div>
-        </a>
-      </div>
+            <a href="service.html#investment">
+                <div class="service__item reveal reveal-bottom" data-target="investment">
+                    <img class="service__icon" src="assets/letter.png" />
+                    <p class="service__text" data-i18n="appeal"></p>
+                </div>
+            </a>
+        </div>
     </section>
 
     <section class="map">
-      <div class="layout">
-        <!-- Variant switcher -->
-        <div class="switcher reveal reveal-left">
-          <h2 class="map__title" data-i18n="map_title"></h2>
+        <div class="layout">
+            <!-- Variant switcher -->
+            <div class="switcher reveal reveal-left">
+                <h2 class="map__title" data-i18n="map_title"></h2>
 
-          <div class="map__box">
-            <button class="switcher__btn">
+                <div class="map__box">
+                    <button class="switcher__btn">
               <svg
                 class="switcher__icon"
                 width="51"
@@ -204,7 +177,7 @@
               <span data-i18n="switcher_cards"></span>
             </button>
 
-            <button class="switcher__btn">
+                    <button class="switcher__btn">
               <svg
                 class="switcher__icon"
                 width="50"
@@ -219,35 +192,28 @@
               </svg>
               <span data-i18n="switcher_overview"></span>
             </button>
-          </div>
-        </div>
+                </div>
+            </div>
 
-        <!-- Variants -->
-        <div class="variant">
-             <div class="map__legend">
-            <span class="map__row"
-              ><img
+            <!-- Variants -->
+            <div class="variant">
+                <div class="map__legend">
+                    <span class="map__row"><img
                 src="assets/institution-icon.png"
                 alt=""
                 class="tooltip__icon" />
               <p class="tooltip__number1" data-i18n="legend1"></p
             ></span>
-            <span class="map__row"
-              ><img src="assets/fines-icon.png" alt="" class="tooltip__icon" />
+                    <span class="map__row"><img src="assets/fines-icon.png" alt="" class="tooltip__icon" />
               <p class="tooltip__number2" data-i18n="legend2"></p
             ></span>
-            <span class="map__row"
-              ><img src="assets/amount-icon.png" alt="" class="tooltip__icon" />
+                    <span class="map__row"><img src="assets/amount-icon.png" alt="" class="tooltip__icon" />
               <p class="tooltip__number3" data-i18n="legend3"></p
             ></span>
-          </div>
+                </div>
 
-          <div class="map__container">
-            <svg
-              class="map__uz"
-              viewBox="0 0 910 594"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+                <div class="map__container">
+                    <svg class="map__uz" viewBox="0 0 910 594" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M831.4 388.9L831.6 389H831.7L831.8 389.1L832 389.2L831.9 389.4H831.8H831.7L831.8 389.5L832 389.6L832.2 389.7L832.3 389.8L832.5 389.9H832.7L832.8 390H833H833.1L833.3 390.1V390.2L833.4 390.3L833.6 390.4L833.7 390.5H833.8V390.4L833.9 390.5L834 390.8L834.1 391L834 391.1V391.4V391.5L834.1 391.8V391.9V392L834.5 391.8L834.6 391.6V391.3L834.8 391.2L834.9 391L835 390.7L835.2 390.6L835.4 390.4H835.6H835.7H835.8L836.1 390.3H836.3L836.5 390.2L836.6 390.1L836.8 390V389.9L837 389.8L837.4 389.2L838.4 387L840 385.3H840.3V385.1L840.6 385L840.7 384.9H840.9L841 384.8L841.2 384.7H841.3H841.4H841.5H841.6H841.7L841.8 384.6L841.9 384.5L842 384.4H842.2H842.4H842.7L842.8 384.5H842.9H843H843.1L843.2 384.6H843.3H843.5L843.7 384.7H843.9L844.1 384.8H844.3L844.4 384.9L844.5 384.8V384.7H844.6L844.7 384.8V385L844.8 385.1V385.2V385.3L844.9 385.5L845 385.6L845.1 385.8L846.2 385.9L846.8 385.7H846.9V385.6L846.6 385.4L846.4 385.3H846.2L845.8 385.1L845.5 384.9L845.7 384.8L846 384.7L846.3 384.6L846.5 384.7L846.8 384.8L847.1 384.9L847.3 385H847.5H847.6V384.8V384.7L847.7 384.6L847.8 384.5L847.9 384.4L848 384.3L848.1 384.1L848.3 383.9V383.8L847.5 383.4L846.5 382.7L846.1 381.7L846.4 380.7L846.7 380.5V380.4L847 380.1L847.3 379.9L847.6 379.7L847.9 379.5L848.1 379.4L848.2 379.3H848.3L848.4 379.2H848.6V379.1L848.7 379V378.9V378.8L848.8 378.7L848.9 378.6L849.2 378.4L849.3 378.2L849.5 378.1L849.6 378L849.8 377.9L849.9 377.7L850.1 377.6L850.3 377.5L850.5 377.4L850.6 377.3L850.7 377.1H850.9L851.1 376.9L851.2 376.8L851.3 376.7L851.2 376.5L851.3 376.4L851.4 376.2H851.6L851.8 376.1L851.9 375.8L852.1 375.3L852.3 374.9H852.4H852.6L852.7 374.8L852.9 374.7L853 374.5L853.2 374.6H853.3L853.5 373.7L854 373L854.4 372.8H854.2H854V372.6V372.5L854.2 372.2L854.3 371.9L854.7 371.7L855 371.5H855.1L855.2 371.4L855.1 371.3L854.9 371.1V371L855.2 370.9L855.4 370.7L855.7 370.5L856.1 370.2L856.6 369.8L856.9 369.4L857.2 369.2L857.4 369L857.7 368.8L857.8 368.7L857.9 368.5V368.3L858.6 368.2V368.5V368.8L858.7 368.9L858.9 369L859 369.1H859.1L859.2 369L859.4 368.8H859.6H860.1L860.3 368.9V368.7L860.2 367.8L860.3 366.5L860.5 365.2V364.4V364V363.6L859.7 363L857 362.1H856.4L856 361.8L854.9 360.2L854.2 359.7L853.7 360.2L853.1 360.9L852.2 361L849 360.3L846.5 359.5L845 359.6L843.9 359.8L842.7 359.6L842.2 359.4L841.8 359.2L839.6 356.2L839.2 355.4L838.7 354.9L838.1 354.6L835.4 353.6H834.5H833.9L833.7 353.8H833.1L832.4 353.5L831 352.8H830.4L830.1 353L830 354.2L829.8 354.1L829.3 353.3L828.1 351.1L826.5 348.7L822.2 350.2L817.4 352.7L816.4 353.6L814.7 356.2L811.3 359.4L810.1 359.7L809.3 359.5L806.9 358.1L805.8 357.3L805.2 357L804.3 356.8L803.7 356.7L803.3 356.4L801.8 354.9L801.4 354.7L799.3 354.4L799.1 354.1L802.4 349.5L796.4 349.9L794.7 349.6L794.4 349.3L794 349L793.1 348.7H792.1L789.6 350.9L788.9 351L787.4 350.8L786.7 350.9L785.8 351.3L785.2 352L784.7 352.7L784.1 353.3L782.8 354.2L781.9 354.7L781.8 355L781.7 355.4L781.5 355.6L780.6 355.8L780.2 356.1L779.4 356.6L778.6 357.4L775.4 360L773.5 362.4L772.9 362.9L772.1 363.3L771.3 363.5L770.5 363.9L769.8 364.6L768.5 366.8L768 367.5L767.5 367.7L763.9 368.5L762.3 369.6L761.4 370.9L761.5 372.4L761.6 372.7L761.7 372.9L762.4 373.9L762.5 374L762.9 374.5L763.1 374.8L762.4 377.3L765 378.4L766.1 378.8L767.3 378.7L768.3 378.3L769.3 378.2L770.5 378.7L771.9 381L772.6 384.3L773.5 387.2L775.7 388.7L777.9 388.9L780.2 388.7L787.7 386.4L792.4 385.9L793.5 386.1L794.5 385L794.4 384.7L794.2 384.5L793.9 384.2L793.8 384.1L793.7 383.6L793.6 383.3V383V382.8H793.7L793.9 382.7L794.1 382.8H794.5H794.8H795.2L795.4 382.7L795.7 382.6L795.8 382.5L796.1 382.4L796.3 382.3H796.6L797.1 382.6L797.4 382.8H797.6L797.7 382.7L797.8 382.6L798 382.5H798.1L798.3 382.4H798.5L798.7 382.3H798.8L799.2 382.2L799.4 382.1L799.6 382L799.9 381.7L800.1 381.4L800.4 381.2L800.8 380.8L801.1 380.6L801.3 380.4L801.5 380.1L801.7 379.9L802 379.6L802.3 379.4V379.3L802.5 379.2H802.6H802.8L803.1 379.3H803.2H803.5L803.7 379.4H804L804.2 379.3H804.3L804.5 379.2L804.6 379.1L804.9 379L805.3 378.7H805.7L806.1 378.5H806.4H806.6L806.9 378.6H807.3L807.7 378.7L807.9 378.8H808.3L808.5 378.9L808.9 379.1H809L809.1 379.2V379.3V379.4L809 379.5V379.7H808.8L808.7 379.8L808.6 379.9V380L808.8 379.9H809.1H809.2V379.8V379.7L809.3 379.6L809.4 379.5H809.6L809.7 379.4L810 379.2L810.1 379.1L810.3 379L810.4 378.9L810.6 378.8L810.7 378.9L811 379L811.2 379.2L811.3 379.3V379.4V379.5V379.6L811.4 379.7V379.8V380L811.3 380.1V380.2L811.4 380.4L811.5 380.6L811.7 380.8L812 381.1L812.2 381.2L812.4 381.3L812.5 381.2L812.7 381.1L812.8 380.9V380.7L812.9 380.5L813 380.4L813.2 380.5H813.4L813.5 380.6V380.7L813.6 380.8L813.8 380.9L814.1 380.8V380.7L814.2 380.5H814.3H814.4H814.6L814.8 380.6H814.9H815.3H815.6L815.5 380.8L815.4 381L815 381.2L814.8 381.3H815.1H815.2L815.5 381.2H815.6H815.9H816H816.1L816.3 381.1H816.4L816.6 381.2L816.8 381.5L817 381.7L817.1 381.8L817.4 382.1L817.7 382.3L818 382.5L818.4 382.8L818.9 383L819.2 383.1L819.6 383.2L819.9 383.3H820H820.4H820.7L820.9 383.4L821.1 383.5H821.2H821.4H821.7H821.9H822.1L822.2 383.3L822.3 383.4L822.5 383.5L822.6 383.7L822.7 383.8L822.8 383.9V384V384.3L822.7 384.6L822.8 384.9V385.1L822.9 385.3L823 385.5V385.6L822.9 385.7L823 385.8L823.1 386V386.1L823 386.3L822.9 386.4L822.7 386.5L822.8 386.6L823 386.8L823.1 386.9L823.5 387H823.7H823.9H824L824.1 387.1L824.5 387.2L825.1 387.5L825.5 387.6H825.6H825.8H825.9V387.5H826.1H826.3L826.5 387.6V387.5V387.4H826.6L826.7 387.3L826.8 387.4H826.9H827.1L827.2 387.5L827.3 387.7V387.8L827.6 387.9L827.7 386.8L828 385.5L828.8 384.8V384.7L828.7 384.6V384.4L828.6 384.2H828.7H828.9H829.2H829.5L829.6 384.1L829.9 384L830 383.9L830.2 383.8H830.3H830.5L830.7 383.7H831.1L831.3 383.8H831.5H831.6L831.8 383.7V383.8V384.2V384.5V384.6V384.7L831.9 384.8L832.1 385L832.4 385.1L832.6 385.2L832.7 385.6L832.8 386.2V386.4L832.6 386.7V386.8V387V387.1L832.7 387.3L832.8 387.6L832.9 387.8L833 388.1L833.2 388.3V388.4V388.5V388.6L833 388.5L832.8 388.3H832.6H832.5V388.4V388.6L832.6 388.8V388.9V389H832.5L832.4 389.1L832.3 389H832.1H832L831.8 388.9H831.4ZM831.4 388.9H831.2L831.1 388.8V388.4M831.4 388.9V388.7L831.3 388.6L831.1 388.4M831.1 388.4L831 388.3M837.3 404.9L836.4 405.8L835.9 406.2H835.7V406.4V406.5L835.6 406.6H835.5H835.4L835.3 406.7H835.2L835.3 406.1V405.8L835.1 405.7L834.8 405.6L834.5 405.4H834.4L834 405.5L833.9 405.4L833.8 405.3L834.1 405.2L835.3 404.2H835.6L835.9 404.1L836 404L836.2 403.9L836.5 403.8L836.6 403.6L836.7 403.5L837.3 403.3L837.6 404L837.3 404.9ZM796 391.7L796.1 391.6L797.3 392.4L798.2 394.1L799 396L799.9 397.1L801.2 398V398.3L801.1 398.5L801.3 398.9L801.4 399.2L801.7 399.5L801.8 399.8V399.9L801.9 400.3V400.6V400.8L801.8 401.1L801.9 401.2V401.3L802 401.4V401.5L802.1 401.6L802.3 401.7L802.6 401.6L802.8 401.5L803 401.3L803.1 400.9L803.3 400.8H803.5H803.8H804L804.2 400.7H804.4H804.7H805L805.2 400.6L805.4 400.5L805.5 400.3L805.6 400.2H805.9L806.2 400.1L806.4 399.9L806.7 399.8V399.9L806.6 400.2L806.3 400.8L806.2 401.2L806.1 401.4L806 401.5L805.7 401.7L805.5 401.8V401.9L805.4 402L805.3 402.1L805.1 402.2L805 402.3L804.8 402.4H804.7H804.5H804.1H804H803.6H803.5L803.4 402.5V402.6L803.7 402.8L803.9 402.9L804.2 403L804.4 403.1L804.6 403.3V403.5L804.5 403.9L804.4 404.4V404.5L804.2 404.6L804 404.8H803.8L803.7 404.9L803.4 405L803.2 405.1L803 405.2L802.9 405.4L803 405.5L803.2 405.6L803.5 405.5L804.1 405.6H804.4H804.7H805.3L805.9 405.7L806.6 406.4L806.7 406.6L806.9 406.8L807.4 407.3V407.7H807.3H807.2V407.8V407.9H807.1H807H806.9L807 408L807.2 408.2L807.3 408.4V408.5L807.1 408.6H806.9H806.6H806.4H806.3L806.1 408.8V408.9L806.2 409L806.3 409.1V409.2L806.1 409.5L806 409.6L805.8 409.8L805.5 409.9H805.3H805H804.9L804.8 410.1L804.5 410.4L804.4 410.3L804.3 410.2H804.1L803.9 410.3H803.8L803.6 410.2H803.4H803.3L802.9 410.3L802.7 410.4L802.6 410.3V410.2L802.5 409.9V409.6L802.7 409.4L802.9 409L802.7 408.7L802.4 408.3L802.1 407.9L801.9 408H801.7L801.4 408.4V408.5V408.8V408.9L801.2 409L801.1 408.9V408.7L801 408.6L800.9 408.9V409.2V409.3L800.8 409.4V409.5V409.6V409.8L800.9 409.9L801 410V410.1L800.9 410.2V410.4H800.8L800.7 410.3L800.6 410.1V409.9L800.5 409.8V409.7L800.4 409.5H800.1H800L799.6 409.6H799.4H799.2L798.7 409.5L798.5 409.6H798.4L798.5 409.3L798.8 409V408.7L798.9 408.5L799 408.4L799.2 408.2L799.5 408.1L799.7 408L799.8 407.9L799.7 407.7L799.8 407.4V407L800 406.6L800.3 406.2L800.4 406L800.6 405.8L800.7 405.7H800.9H801.1L801.4 405.6L801.8 405.4H802L802.1 405.2V405L802 404.8L801.8 404.6L801.5 404.5H801.4L801.2 404.4L801.1 404.3L801 404.2V404.1V403.9L800.9 403.7L800.7 403.5V403.4L800.5 403.2V403L800.7 402.8L800.9 402.7L801 402.5H801.2L801.3 402.6L801.2 402.8L801.4 402.9L801.6 403L801.7 402.9L801.8 402.8L801.9 402.5L801.8 402.3V401.8L801.7 401.5L801.6 401.3L801.3 401.1H800.9L800.7 401H800.4H800.2H800H799.6H799.3H799.1H798.7H798.4H798.1L797.9 400.9L797.5 400.4L797.2 400.2L797 399.9L796.7 399.6L796.4 399.4L796.3 399.1V398.9V398.6V398.4L796.2 398V397.8V397.6L796.1 397.4V397.3L796 397.1L796.1 396.8V396.3V396.2L796.2 395.9L796.3 395.5L796.4 395.1V394.8L796.6 394.4V394.1V393.9L796.5 393.6L796.4 393.2L796.3 392.8L796.1 392L796 391.7Z"
                 class="map__province map__province-fergana"
@@ -418,34 +384,27 @@
                 d="M702.6 317.4L701 317L700.3 315.8L700.6 315.1V314.9L699.7 315.7L698.4 314.2L698 313.4L697.9 312.6L697 313.1L696.9 312.9L698.3 309.5L698.7 307.3L701.5 304.4H703.3L704.5 305.3L706.2 305.5L708.1 306.8L708.3 307.9L707.5 309.3L708.2 309.8L708.8 310.6L708.4 311.3L708.9 311.8L706.9 312.8L704.3 315.3L702.6 317.4Z"
               />
             </svg>
-          </div>
-        </div>
+                </div>
+            </div>
 
-        <div class="variant">
-          <div class="map__legend">
-            <span class="map__row"
-              ><img
+            <div class="variant">
+                <div class="map__legend">
+                    <span class="map__row"><img
                 src="assets/institution-icon.png"
                 alt=""
                 class="tooltip__icon" />
               <p class="tooltip__number1" data-i18n="legend1"></p
             ></span>
-            <span class="map__row"
-              ><img src="assets/fines-icon.png" alt="" class="tooltip__icon" />
+                    <span class="map__row"><img src="assets/fines-icon.png" alt="" class="tooltip__icon" />
               <p class="tooltip__number2" data-i18n="legend2"></p
             ></span>
-            <span class="map__row"
-              ><img src="assets/amount-icon.png" alt="" class="tooltip__icon" />
+                    <span class="map__row"><img src="assets/amount-icon.png" alt="" class="tooltip__icon" />
               <p class="tooltip__number3" data-i18n="legend3"></p
             ></span>
-          </div>
+                </div>
 
-          <div class="map__container">
-            <svg
-              class="map__uz"
-              viewBox="0 0 910 594"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+                <div class="map__container">
+                    <svg class="map__uz" viewBox="0 0 910 594" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M831.4 388.9L831.6 389H831.7L831.8 389.1L832 389.2L831.9 389.4H831.8H831.7L831.8 389.5L832 389.6L832.2 389.7L832.3 389.8L832.5 389.9H832.7L832.8 390H833H833.1L833.3 390.1V390.2L833.4 390.3L833.6 390.4L833.7 390.5H833.8V390.4L833.9 390.5L834 390.8L834.1 391L834 391.1V391.4V391.5L834.1 391.8V391.9V392L834.5 391.8L834.6 391.6V391.3L834.8 391.2L834.9 391L835 390.7L835.2 390.6L835.4 390.4H835.6H835.7H835.8L836.1 390.3H836.3L836.5 390.2L836.6 390.1L836.8 390V389.9L837 389.8L837.4 389.2L838.4 387L840 385.3H840.3V385.1L840.6 385L840.7 384.9H840.9L841 384.8L841.2 384.7H841.3H841.4H841.5H841.6H841.7L841.8 384.6L841.9 384.5L842 384.4H842.2H842.4H842.7L842.8 384.5H842.9H843H843.1L843.2 384.6H843.3H843.5L843.7 384.7H843.9L844.1 384.8H844.3L844.4 384.9L844.5 384.8V384.7H844.6L844.7 384.8V385L844.8 385.1V385.2V385.3L844.9 385.5L845 385.6L845.1 385.8L846.2 385.9L846.8 385.7H846.9V385.6L846.6 385.4L846.4 385.3H846.2L845.8 385.1L845.5 384.9L845.7 384.8L846 384.7L846.3 384.6L846.5 384.7L846.8 384.8L847.1 384.9L847.3 385H847.5H847.6V384.8V384.7L847.7 384.6L847.8 384.5L847.9 384.4L848 384.3L848.1 384.1L848.3 383.9V383.8L847.5 383.4L846.5 382.7L846.1 381.7L846.4 380.7L846.7 380.5V380.4L847 380.1L847.3 379.9L847.6 379.7L847.9 379.5L848.1 379.4L848.2 379.3H848.3L848.4 379.2H848.6V379.1L848.7 379V378.9V378.8L848.8 378.7L848.9 378.6L849.2 378.4L849.3 378.2L849.5 378.1L849.6 378L849.8 377.9L849.9 377.7L850.1 377.6L850.3 377.5L850.5 377.4L850.6 377.3L850.7 377.1H850.9L851.1 376.9L851.2 376.8L851.3 376.7L851.2 376.5L851.3 376.4L851.4 376.2H851.6L851.8 376.1L851.9 375.8L852.1 375.3L852.3 374.9H852.4H852.6L852.7 374.8L852.9 374.7L853 374.5L853.2 374.6H853.3L853.5 373.7L854 373L854.4 372.8H854.2H854V372.6V372.5L854.2 372.2L854.3 371.9L854.7 371.7L855 371.5H855.1L855.2 371.4L855.1 371.3L854.9 371.1V371L855.2 370.9L855.4 370.7L855.7 370.5L856.1 370.2L856.6 369.8L856.9 369.4L857.2 369.2L857.4 369L857.7 368.8L857.8 368.7L857.9 368.5V368.3L858.6 368.2V368.5V368.8L858.7 368.9L858.9 369L859 369.1H859.1L859.2 369L859.4 368.8H859.6H860.1L860.3 368.9V368.7L860.2 367.8L860.3 366.5L860.5 365.2V364.4V364V363.6L859.7 363L857 362.1H856.4L856 361.8L854.9 360.2L854.2 359.7L853.7 360.2L853.1 360.9L852.2 361L849 360.3L846.5 359.5L845 359.6L843.9 359.8L842.7 359.6L842.2 359.4L841.8 359.2L839.6 356.2L839.2 355.4L838.7 354.9L838.1 354.6L835.4 353.6H834.5H833.9L833.7 353.8H833.1L832.4 353.5L831 352.8H830.4L830.1 353L830 354.2L829.8 354.1L829.3 353.3L828.1 351.1L826.5 348.7L822.2 350.2L817.4 352.7L816.4 353.6L814.7 356.2L811.3 359.4L810.1 359.7L809.3 359.5L806.9 358.1L805.8 357.3L805.2 357L804.3 356.8L803.7 356.7L803.3 356.4L801.8 354.9L801.4 354.7L799.3 354.4L799.1 354.1L802.4 349.5L796.4 349.9L794.7 349.6L794.4 349.3L794 349L793.1 348.7H792.1L789.6 350.9L788.9 351L787.4 350.8L786.7 350.9L785.8 351.3L785.2 352L784.7 352.7L784.1 353.3L782.8 354.2L781.9 354.7L781.8 355L781.7 355.4L781.5 355.6L780.6 355.8L780.2 356.1L779.4 356.6L778.6 357.4L775.4 360L773.5 362.4L772.9 362.9L772.1 363.3L771.3 363.5L770.5 363.9L769.8 364.6L768.5 366.8L768 367.5L767.5 367.7L763.9 368.5L762.3 369.6L761.4 370.9L761.5 372.4L761.6 372.7L761.7 372.9L762.4 373.9L762.5 374L762.9 374.5L763.1 374.8L762.4 377.3L765 378.4L766.1 378.8L767.3 378.7L768.3 378.3L769.3 378.2L770.5 378.7L771.9 381L772.6 384.3L773.5 387.2L775.7 388.7L777.9 388.9L780.2 388.7L787.7 386.4L792.4 385.9L793.5 386.1L794.5 385L794.4 384.7L794.2 384.5L793.9 384.2L793.8 384.1L793.7 383.6L793.6 383.3V383V382.8H793.7L793.9 382.7L794.1 382.8H794.5H794.8H795.2L795.4 382.7L795.7 382.6L795.8 382.5L796.1 382.4L796.3 382.3H796.6L797.1 382.6L797.4 382.8H797.6L797.7 382.7L797.8 382.6L798 382.5H798.1L798.3 382.4H798.5L798.7 382.3H798.8L799.2 382.2L799.4 382.1L799.6 382L799.9 381.7L800.1 381.4L800.4 381.2L800.8 380.8L801.1 380.6L801.3 380.4L801.5 380.1L801.7 379.9L802 379.6L802.3 379.4V379.3L802.5 379.2H802.6H802.8L803.1 379.3H803.2H803.5L803.7 379.4H804L804.2 379.3H804.3L804.5 379.2L804.6 379.1L804.9 379L805.3 378.7H805.7L806.1 378.5H806.4H806.6L806.9 378.6H807.3L807.7 378.7L807.9 378.8H808.3L808.5 378.9L808.9 379.1H809L809.1 379.2V379.3V379.4L809 379.5V379.7H808.8L808.7 379.8L808.6 379.9V380L808.8 379.9H809.1H809.2V379.8V379.7L809.3 379.6L809.4 379.5H809.6L809.7 379.4L810 379.2L810.1 379.1L810.3 379L810.4 378.9L810.6 378.8L810.7 378.9L811 379L811.2 379.2L811.3 379.3V379.4V379.5V379.6L811.4 379.7V379.8V380L811.3 380.1V380.2L811.4 380.4L811.5 380.6L811.7 380.8L812 381.1L812.2 381.2L812.4 381.3L812.5 381.2L812.7 381.1L812.8 380.9V380.7L812.9 380.5L813 380.4L813.2 380.5H813.4L813.5 380.6V380.7L813.6 380.8L813.8 380.9L814.1 380.8V380.7L814.2 380.5H814.3H814.4H814.6L814.8 380.6H814.9H815.3H815.6L815.5 380.8L815.4 381L815 381.2L814.8 381.3H815.1H815.2L815.5 381.2H815.6H815.9H816H816.1L816.3 381.1H816.4L816.6 381.2L816.8 381.5L817 381.7L817.1 381.8L817.4 382.1L817.7 382.3L818 382.5L818.4 382.8L818.9 383L819.2 383.1L819.6 383.2L819.9 383.3H820H820.4H820.7L820.9 383.4L821.1 383.5H821.2H821.4H821.7H821.9H822.1L822.2 383.3L822.3 383.4L822.5 383.5L822.6 383.7L822.7 383.8L822.8 383.9V384V384.3L822.7 384.6L822.8 384.9V385.1L822.9 385.3L823 385.5V385.6L822.9 385.7L823 385.8L823.1 386V386.1L823 386.3L822.9 386.4L822.7 386.5L822.8 386.6L823 386.8L823.1 386.9L823.5 387H823.7H823.9H824L824.1 387.1L824.5 387.2L825.1 387.5L825.5 387.6H825.6H825.8H825.9V387.5H826.1H826.3L826.5 387.6V387.5V387.4H826.6L826.7 387.3L826.8 387.4H826.9H827.1L827.2 387.5L827.3 387.7V387.8L827.6 387.9L827.7 386.8L828 385.5L828.8 384.8V384.7L828.7 384.6V384.4L828.6 384.2H828.7H828.9H829.2H829.5L829.6 384.1L829.9 384L830 383.9L830.2 383.8H830.3H830.5L830.7 383.7H831.1L831.3 383.8H831.5H831.6L831.8 383.7V383.8V384.2V384.5V384.6V384.7L831.9 384.8L832.1 385L832.4 385.1L832.6 385.2L832.7 385.6L832.8 386.2V386.4L832.6 386.7V386.8V387V387.1L832.7 387.3L832.8 387.6L832.9 387.8L833 388.1L833.2 388.3V388.4V388.5V388.6L833 388.5L832.8 388.3H832.6H832.5V388.4V388.6L832.6 388.8V388.9V389H832.5L832.4 389.1L832.3 389H832.1H832L831.8 388.9H831.4ZM831.4 388.9H831.2L831.1 388.8V388.4M831.4 388.9V388.7L831.3 388.6L831.1 388.4M831.1 388.4L831 388.3M837.3 404.9L836.4 405.8L835.9 406.2H835.7V406.4V406.5L835.6 406.6H835.5H835.4L835.3 406.7H835.2L835.3 406.1V405.8L835.1 405.7L834.8 405.6L834.5 405.4H834.4L834 405.5L833.9 405.4L833.8 405.3L834.1 405.2L835.3 404.2H835.6L835.9 404.1L836 404L836.2 403.9L836.5 403.8L836.6 403.6L836.7 403.5L837.3 403.3L837.6 404L837.3 404.9ZM796 391.7L796.1 391.6L797.3 392.4L798.2 394.1L799 396L799.9 397.1L801.2 398V398.3L801.1 398.5L801.3 398.9L801.4 399.2L801.7 399.5L801.8 399.8V399.9L801.9 400.3V400.6V400.8L801.8 401.1L801.9 401.2V401.3L802 401.4V401.5L802.1 401.6L802.3 401.7L802.6 401.6L802.8 401.5L803 401.3L803.1 400.9L803.3 400.8H803.5H803.8H804L804.2 400.7H804.4H804.7H805L805.2 400.6L805.4 400.5L805.5 400.3L805.6 400.2H805.9L806.2 400.1L806.4 399.9L806.7 399.8V399.9L806.6 400.2L806.3 400.8L806.2 401.2L806.1 401.4L806 401.5L805.7 401.7L805.5 401.8V401.9L805.4 402L805.3 402.1L805.1 402.2L805 402.3L804.8 402.4H804.7H804.5H804.1H804H803.6H803.5L803.4 402.5V402.6L803.7 402.8L803.9 402.9L804.2 403L804.4 403.1L804.6 403.3V403.5L804.5 403.9L804.4 404.4V404.5L804.2 404.6L804 404.8H803.8L803.7 404.9L803.4 405L803.2 405.1L803 405.2L802.9 405.4L803 405.5L803.2 405.6L803.5 405.5L804.1 405.6H804.4H804.7H805.3L805.9 405.7L806.6 406.4L806.7 406.6L806.9 406.8L807.4 407.3V407.7H807.3H807.2V407.8V407.9H807.1H807H806.9L807 408L807.2 408.2L807.3 408.4V408.5L807.1 408.6H806.9H806.6H806.4H806.3L806.1 408.8V408.9L806.2 409L806.3 409.1V409.2L806.1 409.5L806 409.6L805.8 409.8L805.5 409.9H805.3H805H804.9L804.8 410.1L804.5 410.4L804.4 410.3L804.3 410.2H804.1L803.9 410.3H803.8L803.6 410.2H803.4H803.3L802.9 410.3L802.7 410.4L802.6 410.3V410.2L802.5 409.9V409.6L802.7 409.4L802.9 409L802.7 408.7L802.4 408.3L802.1 407.9L801.9 408H801.7L801.4 408.4V408.5V408.8V408.9L801.2 409L801.1 408.9V408.7L801 408.6L800.9 408.9V409.2V409.3L800.8 409.4V409.5V409.6V409.8L800.9 409.9L801 410V410.1L800.9 410.2V410.4H800.8L800.7 410.3L800.6 410.1V409.9L800.5 409.8V409.7L800.4 409.5H800.1H800L799.6 409.6H799.4H799.2L798.7 409.5L798.5 409.6H798.4L798.5 409.3L798.8 409V408.7L798.9 408.5L799 408.4L799.2 408.2L799.5 408.1L799.7 408L799.8 407.9L799.7 407.7L799.8 407.4V407L800 406.6L800.3 406.2L800.4 406L800.6 405.8L800.7 405.7H800.9H801.1L801.4 405.6L801.8 405.4H802L802.1 405.2V405L802 404.8L801.8 404.6L801.5 404.5H801.4L801.2 404.4L801.1 404.3L801 404.2V404.1V403.9L800.9 403.7L800.7 403.5V403.4L800.5 403.2V403L800.7 402.8L800.9 402.7L801 402.5H801.2L801.3 402.6L801.2 402.8L801.4 402.9L801.6 403L801.7 402.9L801.8 402.8L801.9 402.5L801.8 402.3V401.8L801.7 401.5L801.6 401.3L801.3 401.1H800.9L800.7 401H800.4H800.2H800H799.6H799.3H799.1H798.7H798.4H798.1L797.9 400.9L797.5 400.4L797.2 400.2L797 399.9L796.7 399.6L796.4 399.4L796.3 399.1V398.9V398.6V398.4L796.2 398V397.8V397.6L796.1 397.4V397.3L796 397.1L796.1 396.8V396.3V396.2L796.2 395.9L796.3 395.5L796.4 395.1V394.8L796.6 394.4V394.1V393.9L796.5 393.6L796.4 393.2L796.3 392.8L796.1 392L796 391.7Z"
                 class="map__province map__province-fergana"
@@ -616,84 +575,82 @@
                 d="M702.6 317.4L701 317L700.3 315.8L700.6 315.1V314.9L699.7 315.7L698.4 314.2L698 313.4L697.9 312.6L697 313.1L696.9 312.9L698.3 309.5L698.7 307.3L701.5 304.4H703.3L704.5 305.3L706.2 305.5L708.1 306.8L708.3 307.9L707.5 309.3L708.2 309.8L708.8 310.6L708.4 311.3L708.9 311.8L706.9 312.8L704.3 315.3L702.6 317.4Z"
               />
             </svg>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <div class="carousel reveal reveal-right">
-      <p class="carousel__title" data-i18n="carousel_title"></p>
+        <p class="carousel__title" data-i18n="carousel_title"></p>
 
-      <div class="carousel__track">
-        <a href="https://lex.uz/" class="carousel__card">
-          <div class="carousel__icon">
-            <img src="assets/lex.png" class="carousel__photo" />
-          </div>
+        <div class="carousel__track">
+            <a href="https://lex.uz/" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/lex.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="lex"></p>
-        </a>
+                <p class="carousel__name" data-i18n="lex"></p>
+            </a>
 
-        <a href="https://my.gov.uz/ru" class="carousel__card">
-          <div class="carousel__icon">
-            <img src="assets/mygov.png" class="carousel__photo" />
-          </div>
+            <a href="https://my.gov.uz/ru" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/mygov.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="mygov"></p>
-        </a>
+                <p class="carousel__name" data-i18n="mygov"></p>
+            </a>
 
-        <a href="https://parliament.gov.uz/ru" class="carousel__card">
-          <div class="carousel__icon">
-            <img src="assets/oliy majlis.png" class="carousel__photo" />
-          </div>
+            <a href="https://parliament.gov.uz/ru" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/oliy majlis.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="zakon_palata"></p>
-        </a>
+                <p class="carousel__name" data-i18n="zakon_palata"></p>
+            </a>
 
-        <a href="https://www.gov.uz/ru/iiv" class="carousel__card">
-          <div class="carousel__icon">
-            <img src="assets/mvd.png" class="carousel__photo" />
-          </div>
+            <a href="https://www.gov.uz/ru/iiv" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/mvd.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="mvd"></p>
-        </a>
+                <p class="carousel__name" data-i18n="mvd"></p>
+            </a>
 
-        <a href="https://www.sud.uz/ru/" class="carousel__card">
-          <div class="carousel__icon">
-            <img src="assets/sud.png" class="carousel__photo" />
-          </div>
+            <a href="https://www.sud.uz/ru/" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/sud.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="sud"></p>
-        </a>
+                <p class="carousel__name" data-i18n="sud"></p>
+            </a>
 
-        <a
-          href="https://huquqiyportal.uz/ru?ysclid=mgatbbgrvs851928004"
-          class="carousel__card"
-        >
-          <div class="carousel__icon">
-            <img src="assets/pravovoy-portal.png" class="carousel__photo" />
-          </div>
+            <a href="https://huquqiyportal.uz/ru?ysclid=mgatbbgrvs851928004" class="carousel__card">
+                <div class="carousel__icon">
+                    <img src="assets/pravovoy-portal.png" class="carousel__photo" />
+                </div>
 
-          <p class="carousel__name" data-i18n="portal"></p>
-        </a>
-      </div>
+                <p class="carousel__name" data-i18n="portal"></p>
+            </a>
+        </div>
 
-      <div class="carousel__btn-box">
-        <button class="carousel__btn">
+        <div class="carousel__btn-box">
+            <button class="carousel__btn">
           <img class="carousel__btn--left" src="assets/left arrow.png" />
         </button>
-        <button class="carousel__btn">
+            <button class="carousel__btn">
           <img class="carousel__btn--right" src="assets/right arrow.png" />
         </button>
-      </div>
+        </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <p data-i18n="footer"></p>
+        <p data-i18n="footer"></p>
     </footer>
 
     <script src="https://unpkg.com/i18next@23.7.6/dist/umd/i18next.min.js"></script>
     <script src="main.js"></script>
     <script src="home.js"></script>
-  </body>
+</body>
+
 </html>
