@@ -234,14 +234,20 @@ a {
 .mini-services__message-box {
   display: flex;
   flex-direction: row;
-  gap: 1.25rem;
+  gap: 2.5rem;
   color: #000;
   justify-content: space-between;
   margin: 0 0.9375rem 1.25rem;
 }
 .mini-services__column {
   width: auto;
-  max-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+.mini-services__column-big {
+  width: 37.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

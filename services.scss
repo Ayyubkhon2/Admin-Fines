@@ -233,20 +233,24 @@ a {
         // width: 58rem;
         display: flex;
         flex-direction: row;
-        gap: 1.25rem;
+        gap: 2.5rem;
         color: #000;
         justify-content: space-between;
         margin: 0 0.9375rem 1.25rem;
     }
     &__column {
         width: auto;
-        max-width: 35rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        // padding: 1.25rem 0.9375rem;
         gap: 0.25rem;
-        // height: 6.375rem;
+    }
+    &__column-big {
+        width: 37.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.25rem;
     }
     &__message-title {
         color: #767676;
