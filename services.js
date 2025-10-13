@@ -212,6 +212,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     id_reg: "Названия преприятия",
                     id_number: "ИНН преприятия",
                     subtitle3: "Калькулятор штрафов",
+                    service_calculator: "Инструмент расчета штрафов",
+                    sum_title: "Сумма к оплате:",
+                    sum_number: "Введите сумму",
+                    percentage_title: "Процентная ставка за просрочку платежа в день (%):",
+                    percentage_number: "Введите процентную ставку",
+                    date: "дд.мм.гггг",
+                    start_date: "Дата начала",
+                    end_date: "Конечная дата (крайний срок оплаты)",
                 },
             },
             en: {
@@ -396,6 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+
 
 
     // --- Function to translate all elements globally ---
@@ -597,3 +607,164 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
 
 });
+
+
+
+
+
+
+(function() {
+    const monthsContainer = document.getElementById('monthsContainer');
+    const yearLabel = document.getElementById('yearLabel');
+    const calendar = document.querySelector('.calendar');
+    const calendarBtns = document.querySelectorAll('.services__calculator-calendar');
+    const datePlaceholders = document.querySelectorAll('.placeholder[data-i18n="date"]');
+    const calculatorBox = document.querySelector('.services__calculator-box') || document.body;
+    const editables = document.querySelectorAll('.editable');
+
+    if (!monthsContainer || !yearLabel || !calendar || !calendarBtns.length || !datePlaceholders.length) return;
+
+    // Disable editing of all placeholders
+    editables.forEach(el => el.setAttribute('contenteditable', 'false'));
+
+    // Append calendar to calculatorBox and remove active class initially
+    calculatorBox.appendChild(calendar);
+    calendar.classList.remove('active');
+
+    // --- Calendar data ---
+    const today = new Date();
+    const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const YEAR = now.getFullYear();
+    yearLabel.textContent = YEAR;
+
+    const MONTH_NAMES = {
+        ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        uz: ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'],
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    };
+
+    const WEEKDAY_NAMES = {
+        ru: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+        uz: ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'],
+        en: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+    };
+
+    function daysInMonth(year, month) { return new Date(year, month + 1, 0).getDate(); }
+
+    function dayIndexMonFirst(jsDay) { return (jsDay + 6) % 7; }
+
+    function renderCalendar() {
+        monthsContainer.innerHTML = '';
+        const lang = localStorage.getItem('lang') || 'ru';
+        const monthNames = MONTH_NAMES[lang] || MONTH_NAMES.ru;
+        const weekdayNames = WEEKDAY_NAMES[lang] || WEEKDAY_NAMES.ru;
+
+        for (let m = 0; m < 12; m++) {
+            const monthEl = document.createElement('div');
+            monthEl.className = 'month';
+            monthEl.dataset.month = m;
+            if (YEAR === now.getFullYear() && m > now.getMonth()) monthEl.classList.add('future');
+
+            const header = document.createElement('div');
+            header.className = 'month-header';
+            header.textContent = monthNames[m];
+            monthEl.appendChild(header);
+
+            const weekdays = document.createElement('div');
+            weekdays.className = 'weekdays';
+            weekdayNames.forEach(w => {
+                const d = document.createElement('div');
+                d.textContent = w;
+                weekdays.appendChild(d);
+            });
+            monthEl.appendChild(weekdays);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid';
+
+            const firstJsDay = new Date(YEAR, m, 1).getDay();
+            const firstPos = dayIndexMonFirst(firstJsDay);
+            const totalCells = 42;
+            const daysThisMonth = daysInMonth(YEAR, m);
+            const daysPrevMonth = daysInMonth(YEAR, m - 1 < 0 ? 11 : m - 1);
+
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'day';
+                const dayNumber = i - firstPos + 1;
+                let cellDate;
+
+                if (dayNumber <= 0) {
+                    const prevMonth = (m + 11) % 12;
+                    const prevYear = m === 0 ? YEAR - 1 : YEAR;
+                    const day = daysPrevMonth + dayNumber;
+                    cell.textContent = day;
+                    cell.classList.add('muted');
+                    cellDate = new Date(prevYear, prevMonth, day);
+                } else if (dayNumber > daysThisMonth) {
+                    const nextMonth = (m + 1) % 12;
+                    const nextYear = m === 11 ? YEAR + 1 : YEAR;
+                    const day = dayNumber - daysThisMonth;
+                    cell.textContent = day;
+                    cell.classList.add('muted');
+                    cellDate = new Date(nextYear, nextMonth, day);
+                } else {
+                    cell.textContent = dayNumber;
+                    cellDate = new Date(YEAR, m, dayNumber);
+                }
+
+                if (cellDate.getTime() > now.getTime()) cell.classList.add('future');
+                grid.appendChild(cell);
+            }
+
+            monthEl.appendChild(grid);
+            monthsContainer.appendChild(monthEl);
+        }
+    }
+
+    renderCalendar();
+
+    // --- Toggle calendar and select date per input ---
+    calendarBtns.forEach((btn, i) => {
+        const placeholder = datePlaceholders[i];
+
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+
+            // Show calendar
+            calendar.classList.toggle('active');
+
+            // Click on day
+            const dayClickHandler = event => {
+                const day = event.target.closest('.day');
+                if (!day || day.classList.contains('muted') || day.classList.contains('future')) return;
+
+                const monthEl = day.closest('.month');
+                const year = parseInt(yearLabel.textContent, 10);
+                const month = parseInt(monthEl.dataset.month, 10);
+                const dayNum = parseInt(day.textContent, 10);
+                const formatted = `${String(dayNum).padStart(2,'0')}.${String(month+1).padStart(2,'0')}.${year}`;
+
+                placeholder.textContent = formatted;
+                placeholder.style.color = '#273c63';
+                calendar.classList.remove('active');
+
+                calendar.removeEventListener('click', dayClickHandler);
+            };
+
+            calendar.addEventListener('click', dayClickHandler);
+        });
+    });
+
+    // Close calendar if clicking outside
+    document.addEventListener('click', e => {
+        if (!calendar.contains(e.target) && ![...calendarBtns].some(btn => btn.contains(e.target))) {
+            calendar.classList.remove('active');
+        }
+    });
+
+    // --- React to language changes ---
+    if (window.i18next) {
+        i18next.on('languageChanged', renderCalendar);
+    }
+})();
