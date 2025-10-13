@@ -346,12 +346,12 @@ a {
   width: clamp(10rem, 34vw, 18rem);
   display: flex;
   flex-direction: column;
-  background: rgba(207, 197, 168, 0.8);
+  background: rgba(46, 0, 79, 0.75);
   border-radius: 1rem;
   gap: clamp(0.5rem, 1.5vw, 2rem);
   padding: clamp(0.5rem, 1.5vw, 2rem);
-  border: 2px solid #8E8562;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(26, 110, 209, 0.35);
+  border: 2px solid #3d005f;
+  box-shadow: 0 4px 8px rgba(62, 0, 95, 0.6), 0 0 10px rgba(62, 0, 95, 0.6);
   position: absolute;
   right: clamp(1rem, 3vw, 2rem);
   top: -1rem;

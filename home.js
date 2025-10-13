@@ -366,7 +366,7 @@ i18next.init({
                     appeal: "Подать апелляцию",
                     switcher_cards: "Административные штрафы",
                     switcher_overview: "Финансовые санкции",
-                    map_title: "Меры наказания эмитентов",
+                    map_title: "Меры наказаний",
                     regions: {
                         karakalpakstan: "Республика Каракалпакстан",
                         andijan: "Андижанская область",
@@ -417,7 +417,7 @@ i18next.init({
                     appeal: "Submit an appeal",
                     switcher_cards: "Administrative fines",
                     switcher_overview: "Financial sanctions",
-                    map_title: "Penalties for issuers",
+                    map_title: "Penalties",
                     regions: {
                         karakalpakstan: "Republic of Karakalpakstan",
                         andijan: "Andijan Region",
@@ -467,7 +467,7 @@ i18next.init({
                     appeal: "Shikoyat yuborish",
                     switcher_cards: "Ma'muriy jarimalar",
                     switcher_overview: "Moliyaviy sanksiyalar",
-                    map_title: "Emitentlarni ta'sir choralari",
+                    map_title: "Ta'sir choralari",
                     regions: {
                         karakalpakstan: "Qoraqalpog'iston Respublikasi",
                         andijan: "Andijon viloyati",

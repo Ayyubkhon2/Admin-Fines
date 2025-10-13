@@ -186,12 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     violation_title: "Нарушение",
                     messages: {
                         v1: {
-                            violation: "Приказ ген.директора центра по координации рынка ценных бумаг при госкомимуществе республики Узбекистан",
+                            violation: "Приказ директора национального агенства перспективных проектов республики Узбекистан",
                             term: "до 16.07.2025"
-                        },
-                        v2: {
-                            violation: "Постановление заместителя директора агентства по лицензированию",
-                            term: "до 20.08.2025"
                         },
                         template: {
                             violation: "Lorem Ipsum",
@@ -250,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     violation_title: "Violation",
                     messages: {
                         v1: {
-                            violation: "Order of the CEO of the Center for Coordination of the Securities Market under the SPC of the Republic of Uzbekistan",
+                            violation: "Order of the director of the national agency of perspective projects of the Republic of Uzbekistan",
                             term: "until 16.07.2025"
                         },
                         v2: {
@@ -305,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     violation_title: "Qoidabuzarlik",
                     messages: {
                         v1: {
-                            violation: "O'zbekiston Respublikasi DMBQ huzuridagi Qimmatli qog'ozlar bozorini muvofiqlashtirish markazi Bosh dir.ning buyrug'i",
+                            violation: "O'zbekiston Respublikasi istiqbolli loyihalar milliy agentligi direktorning buyrug'i",
                             term: "16.07.2025 gacha"
                         },
                         v2: {
@@ -342,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Define messages
         window.messages1 = [
             { violation_key: "messages.v1.violation", num_text: "2383", term_key: "messages.v1.term" },
-            { violation_key: "messages.v2.violation", num_text: "2384", term_key: "messages.v2.term" },
+            { violation_key: "messages.template.violation", num_text: "2385", term_key: "messages.template.term" },
             { violation_key: "messages.template.violation", num_text: "2385", term_key: "messages.template.term" },
             { violation_key: "messages.template.violation", num_text: "2386", term_key: "messages.template.term" }
         ];
