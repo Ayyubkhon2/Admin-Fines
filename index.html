@@ -121,29 +121,29 @@
     <section class="service">
         <p class="service__title" data-i18n="service"></p>
         <div class="service__group">
-            <a href="service.html#finance">
-                <div class="service__item reveal reveal-bottom" data-target="finance">
+            <a href="services.html#fines">
+                <div class="service__item reveal reveal-bottom" data-target="fines">
                     <img class="service__icon" src="assets/scale.png" />
                     <p class="service__text" data-i18n="fine"></p>
                 </div>
             </a>
 
-            <a href="service.html#corporate">
-                <div class="service__item reveal reveal-bottom" data-target="corporate">
+            <a href="services.html#sanctions">
+                <div class="service__item reveal reveal-bottom" data-target="sanctions">
                     <img class="service__icon" src="assets/hand.png" />
                     <p class="service__text" data-i18n="sanction"></p>
                 </div>
             </a>
 
-            <a href="service.html#investment">
-                <div class="service__item reveal reveal-bottom" data-target="investment">
+            <a href="services.html#calculator">
+                <div class="service__item reveal reveal-bottom" data-target="calculator">
                     <img class="service__icon" src="assets/calculator.png" />
                     <p class="service__text" data-i18n="calculator"></p>
                 </div>
             </a>
 
-            <a href="service.html#investment">
-                <div class="service__item reveal reveal-bottom" data-target="investment">
+            <a href="services.html#appeal">
+                <div class="service__item reveal reveal-bottom" data-target="appeal">
                     <img class="service__icon" src="assets/letter.png" />
                     <p class="service__text" data-i18n="appeal"></p>
                 </div>
@@ -158,7 +158,7 @@
                 <h2 class="map__title" data-i18n="map_title"></h2>
 
                 <div class="map__box">
-                    <button class="switcher__btn">
+                    <button class="switcher__btn switcher__btn--active" data-variant="variant-fines">
               <svg
                 class="switcher__icon"
                 width="51"
@@ -177,7 +177,7 @@
               <span data-i18n="switcher_cards"></span>
             </button>
 
-                    <button class="switcher__btn">
+                    <button class="switcher__btn" data-variant="variant-sanctions">
               <svg
                 class="switcher__icon"
                 width="50"
@@ -196,7 +196,7 @@
             </div>
 
             <!-- Variants -->
-            <div class="variant">
+            <div class=" variant variant--active" id="variant-fines">
                 <div class="map__legend">
                     <span class="map__row"><img
                 src="assets/institution-icon.png"
@@ -387,7 +387,7 @@
                 </div>
             </div>
 
-            <div class="variant">
+            <div class="variant" id="variant-sanctions">
                 <div class="map__legend">
                     <span class="map__row"><img
                 src="assets/institution-icon.png"

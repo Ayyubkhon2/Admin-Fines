@@ -212,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     subtitle2: "Непогашенные финансовые санкции",
                     id_reg: "Названия преприятия",
                     id_number: "ИНН преприятия",
+                    subtitle3: "Калькулятор штрафов",
                 },
             },
             en: {
@@ -266,6 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     subtitle2: "Unpaid financial sanctions",
                     id_reg: "Name of the enterprise",
                     id_number: "TIN of the enterprise",
+                    subtitle3: "Penalty Calculator",
                 },
             },
             uz: {
@@ -320,6 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     protocol2: "Protokol bo'yicha qidiruv",
                     id_reg: "Korxona nomi",
                     id_number: "Korxonaning STIR raqami",
+                    subtitle3: "Jarima Kalkulyatori",
                 },
             },
         },
@@ -510,4 +513,84 @@ document.addEventListener("DOMContentLoaded", () => {
             initMessageBoard(".mini-services__message-board--6", window.messages6);
         });
     };
+
+    // --- Search button logic ---
+    (() => {
+        const boards = document.querySelectorAll(".mini-services__message-board");
+
+        // Initially hide all boards with opacity 0
+        boards.forEach((board) => {
+            board.style.opacity = "0";
+            board.style.display = "none";
+            board.style.transition = "opacity 0.5s ease"; // fade transition
+        });
+
+        // Spinner
+        const spinner = document.createElement("div");
+        spinner.className = "loading-spinner";
+        document.body.appendChild(spinner);
+
+        document.querySelectorAll(".mini-services__search").forEach((button) => {
+            button.addEventListener("click", () => {
+                const targetId = button.dataset.target;
+                if (!targetId) return;
+
+                // Hide all boards instantly
+                boards.forEach((b) => {
+                    b.style.opacity = "0";
+                    b.style.display = "none";
+                });
+
+                // Show spinner
+                spinner.style.display = "flex";
+
+                // Delay showing the board
+                setTimeout(() => {
+                    const targetBoard = document.getElementById(targetId);
+                    if (targetBoard) {
+                        targetBoard.style.display = "block";
+
+                        // Trigger fade-in
+                        requestAnimationFrame(() => {
+                            targetBoard.style.opacity = "1";
+                        });
+                    }
+
+                    // Hide spinner
+                    spinner.style.display = "none";
+                }, 1000); // delay in ms
+            });
+        });
+    })();
+
+});
+
+
+document.querySelectorAll(".mini-services__input").forEach(div => {
+    const key = div.dataset.i18n;
+
+    // Set placeholder text
+    div.setAttribute("data-placeholder-text", i18next.t(key));
+
+    // Update placeholder on language change
+    i18next.on("languageChanged", () => {
+        div.setAttribute("data-placeholder-text", i18next.t(key));
+    });
+
+    // On focus: clear only if placeholder text is visible
+    div.addEventListener("focus", () => {
+        const placeholder = div.getAttribute("data-placeholder-text");
+        if (div.textContent.trim() === "" || div.textContent.trim() === placeholder) {
+            div.textContent = ""; // clear placeholder only
+        }
+        div.style.color = "#273c63"; // typing color
+    });
+
+    // On blur: restore placeholder if empty
+    div.addEventListener("blur", () => {
+        if (div.textContent.trim() === "") {
+            div.innerHTML = ""; // remove stray <br>
+            div.style.color = "#999";
+        }
+    });
 });
