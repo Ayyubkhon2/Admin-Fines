@@ -71,6 +71,7 @@ a {
   stroke-width: 1;
 }
 .services__box {
+  width: 1200px;
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -252,6 +253,7 @@ a {
   gap: 1.25rem;
   color: #000;
   font-size: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 .mini-services__warning {
   width: 1.5rem;

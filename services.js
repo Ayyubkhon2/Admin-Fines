@@ -1,151 +1,150 @@
 // --------------- Advanced Variant Switcher (with hash navigation) ---------------
 document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".services__btn");
-    const variants = document.querySelectorAll(".services__variant");
+    // --- service (top-level) controls ---
+    const serviceButtons = document.querySelectorAll(".services__btn");
+    const serviceVariants = document.querySelectorAll(".services__variant");
 
-    function activateVariantById(id) {
+    // --- mini controls (inside each service) ---
+    const miniButtons = document.querySelectorAll(".mini-services__btn");
+    const miniVariants = document.querySelectorAll(".mini-services__variant");
+
+    function activateService(id, updateHash = true) {
         const target = document.getElementById(id);
-        const button = document.querySelector(`[data-variant="${id}"]`);
+        if (!target || !target.classList.contains("services__variant")) return;
 
-        if (!target) return;
+        // deactivate all services
+        serviceButtons.forEach((b) => b.classList.remove("services__btn--active"));
+        serviceVariants.forEach((v) => v.classList.remove("services__variant--active"));
 
-        // Update buttons
-        buttons.forEach((b) => b.classList.remove("services__btn--active"));
-        if (button) button.classList.add("services__btn--active");
-
-        // Update variants
-        variants.forEach((v) => {
-            v.classList.remove("services__variant--active");
-            v.style.display = "none";
-        });
-
+        // activate requested service
+        const btn = document.querySelector(`.services__btn[data-variant="${id}"]`);
+        if (btn) btn.classList.add("services__btn--active");
         target.classList.add("services__variant--active");
-        target.style.display = "block";
+
+        if (updateHash) {
+            history.replaceState(null, "", `#${id}`);
+        }
+
+        // Ensure a mini-variant inside this service becomes active if none is active
+        // (find mini variants that are descendants of this service element)
+        const nestedMiniVariants = target.querySelectorAll(".mini-services__variant");
+        const nestedMiniButtons = target.querySelectorAll(".mini-services__btn");
+        const hasActiveMini = Array.from(nestedMiniVariants).some((v) =>
+            v.classList.contains("mini-services__variant--active")
+        );
+        if (nestedMiniVariants.length && !hasActiveMini) {
+            // activate the first nested mini button/variant (if any)
+            const firstMini = nestedMiniVariants[0];
+            const firstMiniId = firstMini.id;
+            if (firstMiniId) activateMini(firstMiniId, false); // don't update hash again
+        }
     }
 
-    // Initial setup: hide inactive variants
-    variants.forEach((v) => {
-        v.style.display = v.classList.contains("services__variant--active") ?
-            "block" :
-            "none";
-    });
+    function activateMini(id, updateHash = true) {
+        const target = document.getElementById(id);
+        if (!target || !target.classList.contains("mini-services__variant")) return;
 
-    // Handle click switching
-    buttons.forEach((button) => {
+        // deactivate all mini variants and buttons (global)
+        miniButtons.forEach((b) => b.classList.remove("mini-services__btn--active"));
+        miniVariants.forEach((v) => v.classList.remove("mini-services__variant--active"));
+
+        // activate requested mini variant/button
+        const btn = document.querySelector(`.mini-services__btn[data-mini="${id}"]`);
+        if (btn) btn.classList.add("mini-services__btn--active");
+        target.classList.add("mini-services__variant--active");
+
+        // ensure parent service is visible/activated (so the mini is visible)
+        const parentService = target.closest(".services__variant");
+        if (parentService && parentService.id) {
+            // Activate service but do not clobber the mini activation we just did.
+            // We call activateService with updateHash=false so we control URL below.
+            activateService(parentService.id, false);
+        }
+
+        if (updateHash) {
+            history.replaceState(null, "", `#${id}`);
+        }
+    }
+
+    // --- initial setup: respect existing --active classes in markup ---
+    // If there's already a services__btn--active, make sure its variant is active.
+    const preActiveServiceBtn = document.querySelector(".services__btn--active");
+    if (preActiveServiceBtn && preActiveServiceBtn.dataset.variant) {
+        const id = preActiveServiceBtn.dataset.variant;
+        // ensure service class is active (in case markup wasn't perfectly set)
+        const svc = document.getElementById(id);
+        if (svc) svc.classList.add("services__variant--active");
+    }
+
+    // If there's already a mini-services__btn--active, ensure its variant is active.
+    const preActiveMiniBtn = document.querySelector(".mini-services__btn--active");
+    if (preActiveMiniBtn && preActiveMiniBtn.dataset.mini) {
+        const id = preActiveMiniBtn.dataset.mini;
+        const mv = document.getElementById(id);
+        if (mv) mv.classList.add("mini-services__variant--active");
+    }
+
+    // If no service is active at all, activate the first service (fallback)
+    if (!document.querySelector(".services__variant--active")) {
+        const firstServiceBtn = serviceButtons[0];
+        if (firstServiceBtn && firstServiceBtn.dataset.variant) {
+            activateService(firstServiceBtn.dataset.variant, false);
+        }
+    }
+
+    // If a service is active but no nested mini is active, activate the first nested mini (fallback)
+    const activeService = document.querySelector(".services__variant--active");
+    if (activeService) {
+        const nestedActiveMini = activeService.querySelector(".mini-services__variant--active");
+        const nestedMini = activeService.querySelector(".mini-services__variant");
+        if (!nestedActiveMini && nestedMini && nestedMini.id) {
+            activateMini(nestedMini.id, false);
+        }
+    }
+
+    // --- click handlers ---
+    serviceButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const targetId = button.dataset.variant;
             if (targetId) {
-                activateVariantById(targetId);
-                history.replaceState(null, "", `#${targetId}`); // optional: update URL
+                activateService(targetId, true);
             }
         });
     });
 
-    // Handle navigation via URL hash (#finance, #corporate, #investment)
-    const hash = window.location.hash.substring(1);
-    if (hash) activateVariantById(hash);
-});
-
-// --------------- Advanced Variant Switcher (with hash navigation) ---------------
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".mini-services__btn");
-    const variants = document.querySelectorAll(".mini-services__variant");
-
-    function activateMiniVariantById(id) {
-        const target = document.getElementById(id);
-        const button = document.querySelector(`[data-mini="${id}"]`);
-
-        if (!target) return;
-
-        // Update buttons
-        buttons.forEach((b) => b.classList.remove("mini-services__btn--active"));
-        if (button) button.classList.add("mini-services__btn--active");
-
-        // Update variants
-        variants.forEach((v) => {
-            v.classList.remove("mini-services__variant--active");
-            v.style.display = "none";
-        });
-
-        target.classList.add("mini-services__variant--active");
-        target.style.display = "block";
-    }
-
-    // Initial setup: hide inactive variants
-    variants.forEach((v) => {
-        v.style.display = v.classList.contains("mini-services__variant--active") ?
-            "block" :
-            "none";
-    });
-
-    // Handle click switching
-    buttons.forEach((button) => {
+    miniButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const targetId = button.dataset.mini;
             if (targetId) {
-                activateMiniVariantById(targetId);
-                history.replaceState(null, "", `#${targetId}`); // optional: update URL
+                activateMini(targetId, true);
             }
         });
     });
 
-    // Handle navigation via URL hash (#finance, #corporate, #investment)
+    // --- hash handling on initial load (supports both service ids and mini ids) ---
     const hash = window.location.hash.substring(1);
-    if (hash) activateMiniVariantById(hash);
+    if (hash) {
+        const elem = document.getElementById(hash);
+        if (elem) {
+            if (elem.classList.contains("services__variant")) {
+                activateService(hash, false);
+            } else if (elem.classList.contains("mini-services__variant")) {
+                // activate the parent service first, then the mini
+                const parent = elem.closest(".services__variant");
+                if (parent && parent.id) {
+                    activateService(parent.id, false);
+                }
+                activateMini(hash, false);
+            }
+            // Note: do not update the hash here (we are already on it)
+        }
+    }
 });
 
-// --------------- Counter ---------------
-// function startCounters(container) {
-//   const counters = container.querySelectorAll("[data-target]");
-//   const duration = 2000; // ms
 
-//   counters.forEach((counter) => {
-//     const target = +counter.getAttribute("data-target");
-//     let start = null;
 
-//     const updateCount = (timestamp) => {
-//       if (!start) start = timestamp;
-//       const progress = timestamp - start;
-//       const progressRatio = Math.min(progress / duration, 1);
 
-//       counter.innerText = Math.floor(progressRatio * target);
 
-//       if (progress < duration) {
-//         requestAnimationFrame(updateCount);
-//       } else {
-//         counter.innerText = target;
-//       }
-//     };
-
-//     requestAnimationFrame(updateCount);
-//   });
-// }
-
-// ---------------  Observer ---------------
-// function observeCounters(selector) {
-//   const containers = document.querySelectorAll(selector);
-
-//   const observer = new IntersectionObserver(
-//     (entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           startCounters(entry.target);
-//         } else {
-//           entry.target.querySelectorAll("[data-target]").forEach((counter) => {
-//             counter.innerText = "0";
-//           });
-//         }
-//       });
-//     },
-//     { threshold: 0.3 }
-//   );
-
-//   containers.forEach((container) => observer.observe(container));
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   observeCounters(".statistics");
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
     // --- i18next initialization ---
@@ -368,6 +367,37 @@ document.addEventListener("DOMContentLoaded", () => {
         initMessageBoard(".mini-services__message-board--6", window.messages6);
     });
 
+
+    document.querySelectorAll(".mini-services__input").forEach((div) => {
+        const key = div.dataset.i18n;
+
+        // Set initial placeholder
+        div.setAttribute("data-placeholder-text", i18next.t(key));
+
+        // Update placeholder on language change
+        i18next.on("languageChanged", () => {
+            div.setAttribute("data-placeholder-text", i18next.t(key));
+        });
+
+        // Focus behavior
+        div.addEventListener("focus", () => {
+            const placeholder = div.getAttribute("data-placeholder-text");
+            if (div.textContent.trim() === "" || div.textContent.trim() === placeholder) {
+                div.textContent = "";
+            }
+            div.style.color = "#273c63";
+        });
+
+        // Blur behavior
+        div.addEventListener("blur", () => {
+            if (div.textContent.trim() === "") {
+                div.innerHTML = "";
+                div.style.color = "#999";
+            }
+        });
+    });
+
+
     // --- Function to translate all elements globally ---
     function updateGlobalTranslations() {
         document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -375,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (key) el.textContent = i18next.t(key);
         });
     }
+
 
     // --- message board logic ---
     function initMessageBoard(boardSelector, messagesArr) {
@@ -514,6 +545,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+
+
     // --- Search button logic ---
     (() => {
         const boards = document.querySelectorAll(".mini-services__message-board");
@@ -563,34 +596,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
-});
-
-
-document.querySelectorAll(".mini-services__input").forEach(div => {
-    const key = div.dataset.i18n;
-
-    // Set placeholder text
-    div.setAttribute("data-placeholder-text", i18next.t(key));
-
-    // Update placeholder on language change
-    i18next.on("languageChanged", () => {
-        div.setAttribute("data-placeholder-text", i18next.t(key));
-    });
-
-    // On focus: clear only if placeholder text is visible
-    div.addEventListener("focus", () => {
-        const placeholder = div.getAttribute("data-placeholder-text");
-        if (div.textContent.trim() === "" || div.textContent.trim() === placeholder) {
-            div.textContent = ""; // clear placeholder only
-        }
-        div.style.color = "#273c63"; // typing color
-    });
-
-    // On blur: restore placeholder if empty
-    div.addEventListener("blur", () => {
-        if (div.textContent.trim() === "") {
-            div.innerHTML = ""; // remove stray <br>
-            div.style.color = "#999";
-        }
-    });
 });
