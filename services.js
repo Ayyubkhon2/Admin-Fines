@@ -209,13 +209,36 @@ document.addEventListener("DOMContentLoaded", () => {
                     id_number: "ИНН преприятия",
                     subtitle3: "Калькулятор штрафов",
                     service_calculator: "Инструмент расчета штрафов",
-                    sum_title: "Сумма к оплате:",
-                    sum_number: "Введите сумму",
+                    professional: "Брокеры",
+                    issuer: "Эмитенты",
+                    individual: "Акционеры",
+                    sum_title: "Размер уставного капитала:",
+                    sum_number: "Введите РУК",
                     percentage_title: "Процентная ставка за просрочку платежа в день (%):",
                     percentage_number: "Введите процентную ставку",
                     date: "дд.мм.гггг",
                     start_date: "Дата начала",
                     end_date: "Конечная дата (крайний срок оплаты)",
+                    subtitle4: "Подача обращений физ.лиц и юр.лиц",
+                    submit: "Подать обращение",
+                    check: "Проверить статус",
+                    appeal_title1: "Имя",
+                    appeal_title2: "Фамилия",
+                    appeal_title3: "Отчество",
+                    appeal_title4: "Область",
+                    appeal_title5: "Район",
+                    appeal_title6: "ПИНФЛ",
+                    appeal_title7: "Номер телефона",
+                    appeal_name: "Введите имя",
+                    appeal_surname: "Введите фамилию",
+                    appeal_patronym: "Введите отчество",
+                    appeal_select: "Выберите",
+                    appeal_pinfl: "Введите данные",
+                    appeal_mobile: "Введите телефон",
+                    appeal_text: "Прикрепите обращение (в формате Word/PDF, не более 10 мб)  ",
+                    appeal_btn: "Отправить",
+                    modal_title: "Ваша заявка отправлена!",
+                    modal_text: "Можете проверить статус вашей заявки в разделе ''Проверить статус'' ",
                 },
             },
             en: {
@@ -557,11 +580,11 @@ document.addEventListener("DOMContentLoaded", () => {
     (() => {
         const boards = document.querySelectorAll(".mini-services__message-board");
 
-        // Initially hide all boards with opacity 0
+        // Initially hide all boards
         boards.forEach((board) => {
             board.style.opacity = "0";
             board.style.display = "none";
-            board.style.transition = "opacity 0.5s ease"; // fade transition
+            board.style.transition = "opacity 0.5s ease";
         });
 
         // Spinner
@@ -569,6 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spinner.className = "loading-spinner";
         document.body.appendChild(spinner);
 
+        // --- BOARD BUTTONS ---
         document.querySelectorAll(".mini-services__search").forEach((button) => {
             button.addEventListener("click", () => {
                 const targetId = button.dataset.target;
@@ -588,19 +612,75 @@ document.addEventListener("DOMContentLoaded", () => {
                     const targetBoard = document.getElementById(targetId);
                     if (targetBoard) {
                         targetBoard.style.display = "block";
-
-                        // Trigger fade-in
                         requestAnimationFrame(() => {
                             targetBoard.style.opacity = "1";
                         });
                     }
-
-                    // Hide spinner
                     spinner.style.display = "none";
-                }, 1000); // delay in ms
+                }, 1000);
             });
         });
+
+        // --- MODAL BUTTONS ---
+        const openModal = document.getElementById("submitBtn");
+        const modalOverlay = document.getElementById("modalOverlay");
+        const closeModal = document.getElementById("closeModal");
+        const modalWindow = modalOverlay ? .querySelector(".modal-window");
+
+        if (modalOverlay && modalWindow) {
+            // Add transitions dynamically
+            modalOverlay.style.opacity = "0";
+            modalOverlay.style.transition = "opacity 0.3s ease";
+            modalOverlay.style.pointerEvents = "none";
+
+            modalWindow.style.transform = "scale(0.95)";
+            modalWindow.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+            modalWindow.style.opacity = "0";
+        }
+
+        openModal ? .addEventListener("click", () => {
+            // Show spinner before modal
+            spinner.style.display = "flex";
+
+            setTimeout(() => {
+                spinner.style.display = "none";
+                modalOverlay.classList.add("active");
+
+                // Animate modal in
+                modalOverlay.style.pointerEvents = "auto";
+                modalOverlay.style.opacity = "1";
+                modalWindow.style.opacity = "1";
+                modalWindow.style.transform = "scale(1)";
+            }, 1000);
+        });
+
+        closeModal ? .addEventListener("click", () => {
+            // Animate modal out
+            modalWindow.style.opacity = "0";
+            modalWindow.style.transform = "scale(0.95)";
+            modalOverlay.style.opacity = "0";
+            modalOverlay.style.pointerEvents = "none";
+
+            setTimeout(() => {
+                modalOverlay.classList.remove("active");
+            }, 300);
+        });
+
+        modalOverlay ? .addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                modalWindow.style.opacity = "0";
+                modalWindow.style.transform = "scale(0.95)";
+                modalOverlay.style.opacity = "0";
+                modalOverlay.style.pointerEvents = "none";
+
+                setTimeout(() => {
+                    modalOverlay.classList.remove("active");
+                }, 300);
+            }
+        });
     })();
+
+
 
 });
 
@@ -727,10 +807,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener('click', e => {
             e.stopPropagation();
 
-            // Show calendar
             calendar.classList.toggle('active');
 
-            // Click on day
             const dayClickHandler = event => {
                 const day = event.target.closest('.day');
                 if (!day || day.classList.contains('muted') || day.classList.contains('future')) return;
@@ -752,15 +830,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Close calendar if clicking outside
     document.addEventListener('click', e => {
         if (!calendar.contains(e.target) && ![...calendarBtns].some(btn => btn.contains(e.target))) {
             calendar.classList.remove('active');
         }
     });
 
-    // --- React to language changes ---
     if (window.i18next) {
         i18next.on('languageChanged', renderCalendar);
     }
 })();
+
+
+const shareBtn = document.getElementById('shareBtn');
+const fileInput = document.getElementById('fileInput');
+
+shareBtn.addEventListener('click', () => {
+    fileInput.click();
+});
+
+fileInput.addEventListener('change', () => {
+    const files = Array.from(fileInput.files);
+    console.log("Selected files:", files);
+
+});
