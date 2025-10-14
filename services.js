@@ -580,41 +580,34 @@ document.addEventListener("DOMContentLoaded", () => {
     (() => {
         const boards = document.querySelectorAll(".mini-services__message-board");
 
-        // Initially hide all boards
-        boards.forEach((board) => {
+        boards.forEach(board => {
             board.style.opacity = "0";
             board.style.display = "none";
             board.style.transition = "opacity 0.5s ease";
         });
 
-        // Spinner
         const spinner = document.createElement("div");
         spinner.className = "loading-spinner";
         document.body.appendChild(spinner);
 
         // --- BOARD BUTTONS ---
-        document.querySelectorAll(".mini-services__search").forEach((button) => {
+        document.querySelectorAll(".mini-services__search").forEach(button => {
             button.addEventListener("click", () => {
                 const targetId = button.dataset.target;
                 if (!targetId) return;
 
-                // Hide all boards instantly
-                boards.forEach((b) => {
+                boards.forEach(b => {
                     b.style.opacity = "0";
                     b.style.display = "none";
                 });
 
-                // Show spinner
                 spinner.style.display = "flex";
 
-                // Delay showing the board
                 setTimeout(() => {
                     const targetBoard = document.getElementById(targetId);
                     if (targetBoard) {
                         targetBoard.style.display = "block";
-                        requestAnimationFrame(() => {
-                            targetBoard.style.opacity = "1";
-                        });
+                        requestAnimationFrame(() => { targetBoard.style.opacity = "1"; });
                     }
                     spinner.style.display = "none";
                 }, 1000);
@@ -625,60 +618,52 @@ document.addEventListener("DOMContentLoaded", () => {
         const openModal = document.getElementById("submitBtn");
         const modalOverlay = document.getElementById("modalOverlay");
         const closeModal = document.getElementById("closeModal");
-        const modalWindow = modalOverlay ? .querySelector(".modal-window");
+        const modalWindow = modalOverlay && modalOverlay.querySelector(".modal-window");
 
         if (modalOverlay && modalWindow) {
-            // Add transitions dynamically
             modalOverlay.style.opacity = "0";
             modalOverlay.style.transition = "opacity 0.3s ease";
             modalOverlay.style.pointerEvents = "none";
-
             modalWindow.style.transform = "scale(0.95)";
             modalWindow.style.transition = "transform 0.3s ease, opacity 0.3s ease";
             modalWindow.style.opacity = "0";
         }
 
-        openModal ? .addEventListener("click", () => {
-            // Show spinner before modal
+        if (openModal) openModal.addEventListener("click", () => {
             spinner.style.display = "flex";
-
             setTimeout(() => {
                 spinner.style.display = "none";
-                modalOverlay.classList.add("active");
-
-                // Animate modal in
-                modalOverlay.style.pointerEvents = "auto";
-                modalOverlay.style.opacity = "1";
-                modalWindow.style.opacity = "1";
-                modalWindow.style.transform = "scale(1)";
+                if (modalOverlay && modalWindow) {
+                    modalOverlay.classList.add("active");
+                    modalOverlay.style.pointerEvents = "auto";
+                    modalOverlay.style.opacity = "1";
+                    modalWindow.style.opacity = "1";
+                    modalWindow.style.transform = "scale(1)";
+                }
             }, 1000);
         });
 
-        closeModal ? .addEventListener("click", () => {
-            // Animate modal out
+        if (closeModal) closeModal.addEventListener("click", () => {
+            if (!(modalOverlay && modalWindow)) return;
             modalWindow.style.opacity = "0";
             modalWindow.style.transform = "scale(0.95)";
             modalOverlay.style.opacity = "0";
             modalOverlay.style.pointerEvents = "none";
-
-            setTimeout(() => {
-                modalOverlay.classList.remove("active");
-            }, 300);
+            setTimeout(() => { modalOverlay.classList.remove("active"); }, 300);
         });
 
-        modalOverlay ? .addEventListener("click", (e) => {
+        if (modalOverlay) modalOverlay.addEventListener("click", e => {
+            if (!(modalOverlay && modalWindow)) return;
             if (e.target === modalOverlay) {
                 modalWindow.style.opacity = "0";
                 modalWindow.style.transform = "scale(0.95)";
                 modalOverlay.style.opacity = "0";
                 modalOverlay.style.pointerEvents = "none";
-
-                setTimeout(() => {
-                    modalOverlay.classList.remove("active");
-                }, 300);
+                setTimeout(() => { modalOverlay.classList.remove("active"); }, 300);
             }
         });
     })();
+
 
 
 
