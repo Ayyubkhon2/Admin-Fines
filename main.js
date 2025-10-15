@@ -1,62 +1,94 @@
-/* Nav animation */
+// Select nav items and single underline
 const navItems = document.querySelectorAll(".header__nav-item");
 const navUnderline = document.querySelector(".header__nav-underline");
 
+let freezeUnderline = false;
+let lockTimer = null;
+
+// Move underline under the given item
 function moveUnderline(item) {
-  if (!item || !navUnderline) return;
+  if (!item || !navUnderline || freezeUnderline) return;
+
   const rect = item.getBoundingClientRect();
   const parentRect = item.parentElement.getBoundingClientRect();
+  const offsetX = rect.left - parentRect.left;
+  const width = rect.width;
 
-  navUnderline.style.width = rect.width + "px";
-  navUnderline.style.transform = `translateX(${rect.left - parentRect.left}px)`;
+  requestAnimationFrame(() => {
+    navUnderline.style.transition = "transform 0.3s ease, width 0.3s ease, opacity 0.3s ease";
+    navUnderline.style.width = `${width}px`;
+    navUnderline.style.transform = `translateX(${offsetX}px)`;
+    navUnderline.style.opacity = "1";
+  });
 }
 
+// Set active nav item
 function setActive(item) {
-  document
-    .querySelector(".header__nav-item--active")
-    ?.classList.remove("header__nav-item--active");
+  if (!item) return;
 
+  document.querySelector(".header__nav-item--active")?.classList.remove("header__nav-item--active");
   item.classList.add("header__nav-item--active");
+
   moveUnderline(item);
 }
 
-// Init underline once DOM is fully ready
+// Initialize click handlers for nav items
+navItems.forEach(item => {
+  const link = item.querySelector("a");
+  if (!link) return;
+
+  link.addEventListener("click", (e) => {
+    e.preventDefault();          // Prevent default navigation
+    setActive(item);             // Move underline
+    setTimeout(() => {           // Delay navigation slightly for animation
+      window.location.href = link.href;
+    }, 50);
+  });
+});
+
+// Initialize underline on page load
 window.addEventListener("load", () => {
   const activeItem = document.querySelector(".header__nav-item--active");
   if (activeItem) moveUnderline(activeItem);
 });
 
-// Add click events
-navItems.forEach((item) => {
-  const link = item.querySelector("a");
-  if (!link) return;
-
-  link.addEventListener("click", () => {
-    setActive(item);
-  });
-});
-
-// Recalc on resize
+// Update underline on window resize
 window.addEventListener("resize", () => {
   const activeItem = document.querySelector(".header__nav-item--active");
   if (activeItem) moveUnderline(activeItem);
 });
 
-// 👇 NEW: Watch for text/language updates in nav
+// MutationObserver: smooth update after DOM changes (like i18next translations)
 const nav = document.querySelector(".header__nav");
 if (nav) {
   const observer = new MutationObserver(() => {
-    const activeItem = document.querySelector(".header__nav-item--active");
-    if (activeItem) {
-      requestAnimationFrame(() => moveUnderline(activeItem)); // wait till layout updates
-    }
+    freezeUnderline = true;
+    clearTimeout(lockTimer);
+    lockTimer = setTimeout(() => {
+      freezeUnderline = false;
+      const activeItem = document.querySelector(".header__nav-item--active");
+      if (activeItem) moveUnderline(activeItem);
+    }, 200);
   });
+
   observer.observe(nav, {
     childList: true,
     subtree: true,
     characterData: true,
   });
 }
+
+// Optional helper for translation updates
+function updateUnderlineAfterTranslation() {
+  const activeItem = document.querySelector(".header__nav-item--active");
+  if (activeItem) moveUnderline(activeItem);
+}
+
+
+
+
+
+
 
 
 /* Reveal animation */

@@ -9,6 +9,7 @@ html {
   height: 100%;
   margin: 0;
   font-size: 16px;
+  transition: none !important;
 }
 
 /* Header */
@@ -51,7 +52,7 @@ html {
     border-radius: 6.1875rem;
     font-size: 0.875rem;
     font-weight: 400;
-    cursor: pointer; 
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,6 +130,7 @@ html {
       transform: scale(1.08);
     }
   }
+
   /* Nav */
   &__nav {
     display: flex;
@@ -168,14 +170,16 @@ html {
     text-decoration: none;
   }
   &__nav-underline {
+    background: #ffc107;
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; 
     height: 0.25rem;
-    width: 2.8125rem;
-    background: #ffc107;
-    transition: transform 0.3s ease-out, width 0.3s ease-out;
-    will-change: transform, width;
+    width: 0; /* start at 0 */
+    opacity: 0;
+    transform: translateX(0);
+    transition: transform 0.3s ease, width 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
   }
 }
 
@@ -332,7 +336,7 @@ html {
   border: 1px solid rgba(0, 123, 255, 0.35);
   backdrop-filter: blur(1px);
   border-radius: 16px;
-} 
+}
 
 /* Reveal animation*/
 .reveal {

@@ -9,6 +9,7 @@ html {
   height: 100%;
   margin: 0;
   font-size: 16px;
+  transition: none !important;
 }
 
 /* Header */
@@ -167,14 +168,16 @@ html {
   text-decoration: none;
 }
 .header__nav-underline {
+  background: #ffc107;
   position: absolute;
   bottom: 0;
   left: 0;
   height: 0.25rem;
-  width: 2.8125rem;
-  background: #ffc107;
-  transition: transform 0.3s ease-out, width 0.3s ease-out;
-  will-change: transform, width;
+  width: 0; /* start at 0 */
+  opacity: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease, width 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
 }
 
 /* Burger */

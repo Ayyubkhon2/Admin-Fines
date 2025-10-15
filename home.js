@@ -443,7 +443,7 @@ i18next.init({
                     portal: "National Legal Internet Portal of the Republic of Uzbekistan",
                     legend1: "- Number of JSCs",
                     legend2: "- Number of fines",
-                    legend3: "- Total amount (in mln. soums)"
+                    legend3: "- Total amount (in mln. sums)"
                 },
             },
             uz: {
