@@ -623,7 +623,7 @@
                     
                     <div class="services__appeal-row">
                         <div class="services__appeal-submit">
-                            <span class="services__appeal-forget" data-i18n="appeal_forget"></span>
+                            <span id="openForgetModal" class="services__appeal-forget" data-i18n="appeal_forget"></span>
                         </div>
                         <button id="checkStatusBtn" class="services__appeal-btn" data-i18n="appeal_check"></button>
                     </div> 
@@ -680,6 +680,47 @@
     </div>
 </div>
 
+ 
+
+<!-- Forget Modal -->
+
+<div class="modal__overlay" id="forgetModalOverlay">
+  <!-- Modal Container -->
+  <div class="modal__container"> 
+    <!-- Close Button -->
+    <button class="modal__close" id="closeForgetModal">&times;</button>
+
+    <!-- Modal Subtitle -->
+    <h2 class="modal__subtitle" data-i18n="modal_subtitle"></h2>
+
+    <!-- Appeal Content -->
+    <div class="modal__appeal-container">
+
+                          <div class="services__appeal-column">
+                            <span data-i18n="appeal_title"></span>
+                            <div class="mini-services__input" contenteditable="true" data-i18n="appeal_name">
+                            </div>
+                        </div>
+       
+                        <div class="services__appeal-column">
+                            <span data-i18n="appeal_title5""></span>
+                            <div class="mini-services__input" contenteditable="true" data-i18n="appeal_mobile"> 
+                            </div>
+                        </div>
+      
+      
+
+      <!-- Appeal Actions Row -->
+      <div class="modal__appeal-row">
+        <!-- Optional Forget Link -->
+
+        <!-- Submit Button -->
+        <button class="modal__appeal-btn" data-i18n="modal_forget"></button>
+      </div>
+ 
+    </div>
+  </div>
+</div> 
 
     
 

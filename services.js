@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
             appeal_btn: "Отправить",
             modal_title: "Ваша заявка отправлена!",
             modal_text:
-              "Можете проверить статус вашей заявки в разделе ''Проверить статус'' ",
+              "Проверить статус заявки можно в разделе ''Проверить статус'' ",
               modal_title2: "Спасибо за обращение!",
             modal_text2:
               "Ваша апелляция зарегистрирована и находится на рассмотрении - статус обновится после завершения проверки.  ",
@@ -245,7 +245,9 @@ document.addEventListener("DOMContentLoaded", () => {
             appeal_reg: "Введите номер обращения", 
              appeal_forget: "Забыли номер обращения?",
              appeal_check: "Проверить",
-             modal_date: "Проверка занимает до 10 рабочих дней.", 
+             modal_date: "Проверка занимает до 10 рабочих дней.",
+             modal_subtitle: "Забыли номер обращения?", 
+             modal_forget: "Отправить", 
           },
         },
         en: {
@@ -449,8 +451,7 @@ modal_date: "Tekshiruv 10 ish kunigacha davom etadi.",
     },
     (err, t) => {
       if (err) console.error("i18next init error:", err);
-
-      // Initialize all static translations
+     
       updateGlobalTranslations();
 
       // Define messages
@@ -1066,3 +1067,58 @@ fileInput.addEventListener("change", () => {
   const files = Array.from(fileInput.files);
   console.log("Selected files:", files);
 });
+
+// Forget Modal JS
+(function() {
+  const openBtn = document.getElementById("openForgetModal"); // button that opens modal
+  const modalOverlay = document.getElementById("forgetModalOverlay");
+  const closeBtn = document.getElementById("closeForgetModal");
+
+  if (!openBtn || !modalOverlay || !closeBtn) return;
+
+  // Initialize modal state
+  Object.assign(modalOverlay.style, {
+    opacity: "0",
+    transition: "opacity 0.3s ease",
+    pointerEvents: "none"
+  });
+
+  const modalContainer = modalOverlay.querySelector(".modal__container");
+  Object.assign(modalContainer.style, {
+    transform: "scale(0.95)",
+    transition: "transform 0.3s ease, opacity 0.3s ease",
+    opacity: "0"
+  });
+
+  // Show modal
+  function showModal() {
+    modalOverlay.classList.add("active");
+    modalOverlay.style.pointerEvents = "auto";
+
+    requestAnimationFrame(() => {
+      modalOverlay.style.opacity = "1";
+      modalContainer.style.opacity = "1";
+      modalContainer.style.transform = "scale(1)";
+    });
+  }
+
+  // Hide modal
+  function hideModal() {
+    modalContainer.style.opacity = "0";
+    modalContainer.style.transform = "scale(0.95)";
+    modalOverlay.style.opacity = "0";
+    modalOverlay.style.pointerEvents = "none";
+
+    setTimeout(() => modalOverlay.classList.remove("active"), 300);
+  }
+
+  // Click events
+  openBtn.addEventListener("click", showModal);
+  closeBtn.addEventListener("click", hideModal);
+
+  // Close when clicking outside modal container
+  modalOverlay.addEventListener("click", e => {
+    if (e.target === modalOverlay) hideModal();
+  });
+
+})();
