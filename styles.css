@@ -261,14 +261,14 @@ html {
   display: inline-block;
 }
 .language-dropdown__btn {
-  padding: 0.625rem;
+  padding: 0.625rem clamp(0.25rem, 2.16vw, 2rem);
   cursor: pointer;
   background: transparent;
   border: none;
   font-size: 0.75rem;
   color: #ffffff;
   font-weight: 400;
-  width: 8.125rem;
+  width: auto;
   height: 2.1875rem;
   display: flex;
   justify-content: center;

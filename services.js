@@ -1,9 +1,7 @@
-// Variant Switcher 
+// Variant Switcher
 document.addEventListener("DOMContentLoaded", () => {
-
   const serviceButtons = document.querySelectorAll(".services__btn");
   const serviceVariants = document.querySelectorAll(".services__variant");
-
 
   function activateService(id, updateHash = true) {
     const target = document.getElementById(id);
@@ -13,14 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     serviceVariants.forEach((v) =>
       v.classList.remove("services__variant--active")
     );
-   
+
     const btn = document.querySelector(`.services__btn[data-variant="${id}"]`);
     if (btn) btn.classList.add("services__btn--active");
     target.classList.add("services__variant--active");
 
     if (updateHash) history.replaceState(null, "", `#${id}`);
 
-  
     const nestedMiniVariants = target.querySelectorAll(
       ".mini-services__variant"
     );
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (nestedMiniVariants.length && !hasActiveMini) {
       const firstMini = nestedMiniVariants[0];
       if (firstMini?.id) {
-       
         activateMini(firstMini.id, false);
       }
     }
@@ -109,14 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  //  click handlers 
+  //  click handlers
   serviceButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const targetId = button.dataset.variant;
       if (targetId) activateService(targetId, true);
     });
   });
-
 
   document.querySelectorAll(".mini-services__btn").forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -126,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // hash handling  
+  // hash handling
   const hash = window.location.hash.substring(1);
   if (hash) {
     const elem = document.getElementById(hash);
@@ -217,7 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
             date: "дд.мм.гггг",
             start_date: "Дата начала",
             end_date: "Конечная дата (крайний срок оплаты)",
-            subtitle4: "Подача и отслеживание обращений физических и юридических лиц ", 
+            subtitle4:
+              "Подача и отслеживание обращений физических и юридических лиц ",
             submit: "Подать обращение",
             check: "Проверить статус",
             legal_entity: "Юр. лица",
@@ -237,17 +233,17 @@ document.addEventListener("DOMContentLoaded", () => {
             modal_title: "Ваша заявка отправлена!",
             modal_text:
               "Проверить статус заявки можно в разделе ''Проверить статус'' ",
-              modal_title2: "Спасибо за обращение!",
+            modal_title2: "Спасибо за обращение!",
             modal_text2:
               "Ваша апелляция зарегистрирована и находится на рассмотрении - статус обновится после завершения проверки.  ",
             reg_text: "Регистрационный номер:",
-            appeal_title6: "Регистрационный номер", 
-            appeal_reg: "Введите номер обращения", 
-             appeal_forget: "Забыли номер обращения?",
-             appeal_check: "Проверить",
-             modal_date: "Проверка занимает до 10 рабочих дней.",
-             modal_subtitle: "Забыли номер обращения?", 
-             modal_forget: "Отправить", 
+            appeal_title6: "Регистрационный номер",
+            appeal_reg: "Введите номер обращения",
+            appeal_forget: "Забыли номер обращения?",
+            appeal_check: "Проверить",
+            modal_date: "Проверка занимает до 10 рабочих дней.",
+            modal_subtitle: "Забыли номер обращения?",
+            modal_forget: "Отправить",
           },
         },
         en: {
@@ -307,44 +303,45 @@ document.addEventListener("DOMContentLoaded", () => {
             id_number: "TIN of the enterprise",
             subtitle3: "Penalty Calculator",
             service_calculator: "Fine Calculation Tool",
-professional: "Professional Participants",
-issuer: "Issuers",
-individual: "Shareholders",
-sum_title: "Authorized Capital Amount:",
-sum_number: "Enter the Capital Amount",
-date: "dd.mm.yyyy",
-start_date: "Start Date",
-end_date: "End Date (Payment Deadline)",
-subtitle4: "Submission and Tracking of Appeals from Individuals and Legal Entities",
-submit: "Submit Appeal",
-check: "Check Status",
-legal_entity: "Legal Entities",
-physical_entity: "Individuals",
-appeal_title: "Name (for individual) or organization name (for legal entity)",
-appeal_title2: "Region",
-appeal_title3: "District",
-appeal_title4: "PINFL/TIN",
-appeal_title5: "Phone Number",
-appeal_name: "Enter name/organization name",
-appeal_select: "Select",
-appeal_pinfl: "Enter data",
-appeal_mobile: "Enter phone number",
-appeal_text:
-  "Attach the appeal (in Word/PDF format, up to 10 MB)  ",
-appeal_btn: "Send",
-modal_title: "Your application has been sent!",
-modal_text:
-  "You can check the status of your application in the 'Check Status' section ",
-modal_title2: "Thank you for your appeal!",
-modal_text2:
-  "Your appeal has been registered and is under review — the status will be updated after verification is completed.",
-reg_text: "Registration number:",
-appeal_title6: "Registration Number", 
-appeal_reg: "Enter appeal number", 
-appeal_forget: "Forgot your appeal number?",
-appeal_check: "Check",
-modal_date: "Verification takes up to 10 working days.",
-
+            professional: "Professional Participants",
+            issuer: "Issuers",
+            individual: "Shareholders",
+            sum_title: "Authorized Capital Amount:",
+            sum_number: "Enter the Capital Amount",
+            date: "dd.mm.yyyy",
+            start_date: "Start Date",
+            end_date: "End Date (Payment Deadline)",
+            subtitle4:
+              "Submission and Tracking of Appeals from Individuals and Legal Entities",
+            submit: "Submit Appeal",
+            check: "Check Status",
+            legal_entity: "Legal Entities",
+            physical_entity: "Individuals",
+            appeal_title:
+              "Name (for individual) or organization name (for legal entity)",
+            appeal_title2: "Region",
+            appeal_title3: "District",
+            appeal_title4: "PINFL/TIN",
+            appeal_title5: "Phone Number",
+            appeal_name: "Enter name/organization name",
+            appeal_select: "Select",
+            appeal_pinfl: "Enter data",
+            appeal_mobile: "Enter phone number",
+            appeal_text:
+              "Attach the appeal (in Word/PDF format, up to 10 MB)  ",
+            appeal_btn: "Send",
+            modal_title: "Your application has been sent!",
+            modal_text:
+              "You can check the status of your application in the 'Check Status' section ",
+            modal_title2: "Thank you for your appeal!",
+            modal_text2:
+              "Your appeal has been registered and is under review — the status will be updated after verification is completed.",
+            reg_text: "Registration number:",
+            appeal_title6: "Registration Number",
+            appeal_reg: "Enter appeal number",
+            appeal_forget: "Forgot your appeal number?",
+            appeal_check: "Check",
+            modal_date: "Verification takes up to 10 working days.",
           },
         },
         uz: {
@@ -407,51 +404,52 @@ modal_date: "Verification takes up to 10 working days.",
             id_number: "Korxonaning STIR raqami",
             subtitle3: "Jarima Kalkulyatori",
             service_calculator: "Jarima hisoblash vositasi",
-professional: "Professional ishtirokchilar",
-issuer: "Emitentlar",
-individual: "Aksiyadorlar",
-sum_title: "Ustav kapitali miqdori:",
-sum_number: "Ustav kapitalini kiriting",
-date: "kk.oo.yyyy",
-start_date: "Boshlanish sanasi",
-end_date: "Tugatish sanasi (to'lov muddati)",
-subtitle4: "Jismoniy va yuridik shaxslarning murojaatlarini yuborish va kuzatish",
-submit: "Murojaat yuborish",
-check: "Holatini tekshirish",
-legal_entity: "Yuridik shaxslar",
-physical_entity: "Jismoniy shaxslar",
-appeal_title: "Ism (jismoniy shaxs uchun) yoki tashkilot nomi (yuridik shaxs uchun)",
-appeal_title2: "Viloyat",
-appeal_title3: "Tuman",
-appeal_title4: "JShShIR/INN",
-appeal_title5: "Telefon raqami",
-appeal_name: "Ismni/tashkilot nomini kiriting",
-appeal_select: "Tanlang",
-appeal_pinfl: "Ma'lumotni kiriting",
-appeal_mobile: "Telefon raqamini kiriting",
-appeal_text:
-  "Murojaatni biriktiring (Word/PDF formatda, 10 MB dan oshmasin)  ",
-appeal_btn: "Yuborish",
-modal_title: "So'rovingiz yuborildi!",
-modal_text:
-  "So'rovingiz holatini ''Holatini tekshirish'' bo'limida ko'rishingiz mumkin ",
-modal_title2: "Murojaatingiz uchun rahmat!",
-modal_text2:
-  "Murojaatingiz ro'yxatga olindi va ko'rib chiqilmoqda — tekshiruv yakunlangandan so'ng holat yangilanadi.",
-reg_text: "Ro'yxat raqami:",
-appeal_title6: "Ro'yxat raqami", 
-appeal_reg: "Murojaat raqamini kiriting", 
-appeal_forget: "Murojaat raqamini unutdingizmi?",
-appeal_check: "Tekshirish",
-modal_date: "Tekshiruv 10 ish kunigacha davom etadi.",
-
+            professional: "Professional ishtirokchilar",
+            issuer: "Emitentlar",
+            individual: "Aksiyadorlar",
+            sum_title: "Ustav kapitali miqdori:",
+            sum_number: "Ustav kapitalini kiriting",
+            date: "kk.oo.yyyy",
+            start_date: "Boshlanish sanasi",
+            end_date: "Tugatish sanasi (to'lov muddati)",
+            subtitle4:
+              "Jismoniy va yuridik shaxslarning murojaatlarini yuborish va kuzatish",
+            submit: "Murojaat yuborish",
+            check: "Holatini tekshirish",
+            legal_entity: "Yuridik shaxslar",
+            physical_entity: "Jismoniy shaxslar",
+            appeal_title:
+              "Ism (jismoniy shaxs uchun) yoki tashkilot nomi (yuridik shaxs uchun)",
+            appeal_title2: "Viloyat",
+            appeal_title3: "Tuman",
+            appeal_title4: "JShShIR/INN",
+            appeal_title5: "Telefon raqami",
+            appeal_name: "Ismni/tashkilot nomini kiriting",
+            appeal_select: "Tanlang",
+            appeal_pinfl: "Ma'lumotni kiriting",
+            appeal_mobile: "Telefon raqamini kiriting",
+            appeal_text:
+              "Murojaatni biriktiring (Word/PDF formatda, 10 MB dan oshmasin)  ",
+            appeal_btn: "Yuborish",
+            modal_title: "So'rovingiz yuborildi!",
+            modal_text:
+              "So'rovingiz holatini ''Holatini tekshirish'' bo'limida ko'rishingiz mumkin ",
+            modal_title2: "Murojaatingiz uchun rahmat!",
+            modal_text2:
+              "Murojaatingiz ro'yxatga olindi va ko'rib chiqilmoqda — tekshiruv yakunlangandan so'ng holat yangilanadi.",
+            reg_text: "Ro'yxat raqami:",
+            appeal_title6: "Ro'yxat raqami",
+            appeal_reg: "Murojaat raqamini kiriting",
+            appeal_forget: "Murojaat raqamini unutdingizmi?",
+            appeal_check: "Tekshirish",
+            modal_date: "Tekshiruv 10 ish kunigacha davom etadi.",
           },
         },
       },
     },
     (err, t) => {
       if (err) console.error("i18next init error:", err);
-     
+
       updateGlobalTranslations();
 
       // Define messages
@@ -723,119 +721,122 @@ modal_date: "Tekshiruv 10 ish kunigacha davom etadi.",
   };
 
   // --- Search button logic ---
-(function () {
-
+  (function () {
     // Mini-service boards
     const boards = document.querySelectorAll(".mini-services__message-board");
-    boards.forEach(board => {
-        Object.assign(board.style, {
-            opacity: "0",
-            display: "none",
-            transition: "opacity 0.5s ease"
-        });
+    boards.forEach((board) => {
+      Object.assign(board.style, {
+        opacity: "0",
+        display: "none",
+        transition: "opacity 0.5s ease",
+      });
     });
 
     const spinner = document.createElement("div");
     spinner.className = "loading-spinner";
     document.body.appendChild(spinner);
 
-    document.querySelectorAll(".mini-services__search").forEach(button => {
-        button.addEventListener("click", () => {
-            const targetId = button.dataset.target;
-            if (!targetId) return;
+    document.querySelectorAll(".mini-services__search").forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.dataset.target;
+        if (!targetId) return;
 
-            boards.forEach(b => {
-                b.style.opacity = "0";
-                b.style.display = "none";
-            });
-
-            spinner.style.display = "flex";
-
-            setTimeout(() => {
-                const targetBoard = document.getElementById(targetId);
-                if (targetBoard) {
-                    targetBoard.style.display = "block";
-                    requestAnimationFrame(() => { targetBoard.style.opacity = "1"; });
-                }
-                spinner.style.display = "none";
-            }, 1000);
+        boards.forEach((b) => {
+          b.style.opacity = "0";
+          b.style.display = "none";
         });
+
+        spinner.style.display = "flex";
+
+        setTimeout(() => {
+          const targetBoard = document.getElementById(targetId);
+          if (targetBoard) {
+            targetBoard.style.display = "block";
+            requestAnimationFrame(() => {
+              targetBoard.style.opacity = "1";
+            });
+          }
+          spinner.style.display = "none";
+        }, 1000);
+      });
     });
 
     // Utility: Generate registration number
     function generateRegNumber() {
-        const d = new Date();
-        const yyyy = d.getFullYear().toString().slice(-2);
-        const mm = ("0" + (d.getMonth() + 1)).slice(-2);
-        const dd = ("0" + d.getDate()).slice(-2);
-        const rand = Math.floor(1000 + Math.random() * 9000);
-        return `REG-${yyyy}${mm}${dd}-${rand}`;
+      const d = new Date();
+      const yyyy = d.getFullYear().toString().slice(-2);
+      const mm = ("0" + (d.getMonth() + 1)).slice(-2);
+      const dd = ("0" + d.getDate()).slice(-2);
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      return `REG-${yyyy}${mm}${dd}-${rand}`;
     }
 
     // Generic modal initializer
     function setupModal(openBtnId, overlayId, closeBtnId, regNumberId) {
-        const openBtn = document.getElementById(openBtnId);
-        const modalOverlay = document.getElementById(overlayId);
-        const closeModal = document.getElementById(closeBtnId);
-        if (!openBtn || !modalOverlay || !closeModal) return;
+      const openBtn = document.getElementById(openBtnId);
+      const modalOverlay = document.getElementById(overlayId);
+      const closeModal = document.getElementById(closeBtnId);
+      if (!openBtn || !modalOverlay || !closeModal) return;
 
-        const modalWindow = modalOverlay.querySelector(".modal-window");
-        const modalTitle = modalOverlay.querySelector(".modal-title");
-        const modalText = modalOverlay.querySelector(".modal-text");
-        const modalRegNumber = modalOverlay.querySelector(`#${regNumberId}`);
+      const modalWindow = modalOverlay.querySelector(".modal-window");
+      const modalTitle = modalOverlay.querySelector(".modal-title");
+      const modalText = modalOverlay.querySelector(".modal-text");
+      const modalRegNumber = modalOverlay.querySelector(`#${regNumberId}`);
 
-        Object.assign(modalOverlay.style, {
-            opacity: "0",
-            transition: "opacity 0.3s ease",
-            pointerEvents: "none"
-        });
+      Object.assign(modalOverlay.style, {
+        opacity: "0",
+        transition: "opacity 0.3s ease",
+        pointerEvents: "none",
+      });
 
-        Object.assign(modalWindow.style, {
-            transform: "scale(0.95)",
-            transition: "transform 0.3s ease, opacity 0.3s ease",
-            opacity: "0"
-        });
+      Object.assign(modalWindow.style, {
+        transform: "scale(0.95)",
+        transition: "transform 0.3s ease, opacity 0.3s ease",
+        opacity: "0",
+      });
 
-        function showModal() {
-            spinner.style.display = "flex";
-            setTimeout(() => {
-                spinner.style.display = "none";
-                if (modalTitle) modalTitle.textContent = i18next.t(modalOverlay.dataset.titleKey);
-                if (modalText) modalText.textContent = i18next.t(modalOverlay.dataset.textKey);
-                if (modalRegNumber) modalRegNumber.textContent = generateRegNumber();
+      function showModal() {
+        spinner.style.display = "flex";
+        setTimeout(() => {
+          spinner.style.display = "none";
+          if (modalTitle)
+            modalTitle.textContent = i18next.t(modalOverlay.dataset.titleKey);
+          if (modalText)
+            modalText.textContent = i18next.t(modalOverlay.dataset.textKey);
+          if (modalRegNumber) modalRegNumber.textContent = generateRegNumber();
 
-                modalOverlay.classList.add("active");
-                modalOverlay.style.pointerEvents = "auto";
-                modalOverlay.style.opacity = "1";
-                modalWindow.style.opacity = "1";
-                modalWindow.style.transform = "scale(1)";
-            }, 800);
-        }
+          modalOverlay.classList.add("active");
+          modalOverlay.style.pointerEvents = "auto";
+          modalOverlay.style.opacity = "1";
+          modalWindow.style.opacity = "1";
+          modalWindow.style.transform = "scale(1)";
+        }, 800);
+      }
 
-        function hideModal() {
-            modalWindow.style.opacity = "0";
-            modalWindow.style.transform = "scale(0.95)";
-            modalOverlay.style.opacity = "0";
-            modalOverlay.style.pointerEvents = "none";
-            setTimeout(() => modalOverlay.classList.remove("active"), 300);
-        }
+      function hideModal() {
+        modalWindow.style.opacity = "0";
+        modalWindow.style.transform = "scale(0.95)";
+        modalOverlay.style.opacity = "0";
+        modalOverlay.style.pointerEvents = "none";
+        setTimeout(() => modalOverlay.classList.remove("active"), 300);
+      }
 
-        openBtn.addEventListener("click", showModal);
-        closeModal.addEventListener("click", hideModal);
-        modalOverlay.addEventListener("click", e => {
-            if (e.target === modalOverlay) hideModal();
-        });
+      openBtn.addEventListener("click", showModal);
+      closeModal.addEventListener("click", hideModal);
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) hideModal();
+      });
     }
 
     // Initialize both modals
     setupModal("submitBtn", "modalOverlay", "closeModal", "modalRegNumber");
-    setupModal("checkStatusBtn", "statusModalOverlay", "closeStatusModal", "statusRegNumber");
-
-})();
-
-
-
-
+    setupModal(
+      "checkStatusBtn",
+      "statusModalOverlay",
+      "closeStatusModal",
+      "statusRegNumber"
+    );
+  })();
 });
 
 (function () {
@@ -1069,7 +1070,7 @@ fileInput.addEventListener("change", () => {
 });
 
 // Forget Modal JS
-(function() {
+(function () {
   const openBtn = document.getElementById("openForgetModal"); // button that opens modal
   const modalOverlay = document.getElementById("forgetModalOverlay");
   const closeBtn = document.getElementById("closeForgetModal");
@@ -1080,14 +1081,14 @@ fileInput.addEventListener("change", () => {
   Object.assign(modalOverlay.style, {
     opacity: "0",
     transition: "opacity 0.3s ease",
-    pointerEvents: "none"
+    pointerEvents: "none",
   });
 
   const modalContainer = modalOverlay.querySelector(".modal__container");
   Object.assign(modalContainer.style, {
     transform: "scale(0.95)",
     transition: "transform 0.3s ease, opacity 0.3s ease",
-    opacity: "0"
+    opacity: "0",
   });
 
   // Show modal
@@ -1117,8 +1118,7 @@ fileInput.addEventListener("change", () => {
   closeBtn.addEventListener("click", hideModal);
 
   // Close when clicking outside modal container
-  modalOverlay.addEventListener("click", e => {
+  modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) hideModal();
   });
-
 })();
