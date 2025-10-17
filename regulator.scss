@@ -95,6 +95,9 @@ a {
     border-bottom: 2px solid rgba(0, 0, 0, 0.1); 
     padding: 1.875rem 0.9375rem; 
   }
+   &__row:last-child {
+    border: none; 
+  }
   &__category{
     min-width: 8.625rem; 
     border-radius: 1rem;

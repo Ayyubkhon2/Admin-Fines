@@ -96,6 +96,9 @@ a {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   padding: 1.875rem 0.9375rem;
 }
+.mini-regulator__row:last-child {
+  border: none;
+}
 .mini-regulator__category {
   min-width: 8.625rem;
   border-radius: 1rem;
