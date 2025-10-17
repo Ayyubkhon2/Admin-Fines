@@ -35,7 +35,7 @@ html {
 }
 .header__left {
   display: flex;
-  gap: 1.875rem;
+  gap: clamp(0.5rem, 1.85vw, 1.875rem);
   width: 29.5625rem;
   justify-content: center;
 }
@@ -72,7 +72,7 @@ html {
   flex-direction: row;
   align-items: center;
   gap: 0.625rem;
-  width: 9.8125rem;
+  width: clamp(8.125rem, 9.75vw, 9.8125rem);
   text-decoration: none;
   transition: all 3s ease-out;
 }
@@ -80,14 +80,14 @@ html {
   color: #ffffff;
   text-align: left;
   font-family: Poppins;
-  font-size: 0.5rem;
+  font-size: clamp(0.4rem, 0.8vw, 0.5rem);
   font-weight: 400;
   line-height: 65%;
   width: 6.5rem;
 }
 .header__logo-bold {
   color: #ffffff;
-  font-size: 1.438rem;
+  font-size: clamp(1rem, 2.15vw, 1.438rem);
   font-weight: 800;
   line-height: 90%;
   font-family: Poppins;
@@ -99,7 +99,7 @@ html {
 .header__logo-subtitle {
   color: #28a745;
   font-family: Poppins;
-  font-size: 0.5rem;
+  font-size: clamp(0.4rem, 0.8vw, 0.5rem);
   font-weight: 400;
 }
 .header__logo-img {
@@ -261,14 +261,14 @@ html {
   display: inline-block;
 }
 .language-dropdown__btn {
-  padding: 0.625rem clamp(0.25rem, 2.16vw, 2rem);
+  padding: 0.625rem clamp(0.25rem, 0.5vw, 2rem);
   cursor: pointer;
   background: transparent;
   border: none;
   font-size: 0.75rem;
   color: #ffffff;
   font-weight: 400;
-  width: auto;
+  width: clamp(6.25rem, 12.65vw, 10rem);
   height: 2.1875rem;
   display: flex;
   justify-content: center;
@@ -287,12 +287,13 @@ html {
   left: 0;
   background: white;
   border: 0.0625rem solid #000;
-  width: 8.125rem;
+  width: 100%;
   border-radius: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
   z-index: 100;
+  box-sizing: border-box;
 }
 .language-dropdown__option {
   padding: 0.625rem 1.375rem;
@@ -301,7 +302,7 @@ html {
   font-weight: 400;
   font-size: 0.75rem;
   text-align: left;
-  width: 8.125rem;
+  width: 100%;
   height: 2.1875rem;
   display: flex;
   align-items: center;

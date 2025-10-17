@@ -7,16 +7,16 @@
 
 html {
   height: 100%;
-  margin: 0; 
+  margin: 0;
   font-size: 16px;
-  transition: none !important;
+  transition: none !important; 
 }
- 
+
 /* Header */
 .header {
   width: 100%;
   background: #0056b3;
-  position: fixed; 
+  position: fixed;
   top: 0;
   z-index: 1000;
   display: flex;
@@ -32,7 +32,7 @@ html {
   }
   &__left {
     display: flex;
-    gap: 1.875rem;
+    gap: clamp(0.5rem, 1.85vw, 1.875rem);
     width: 29.5625rem;
     justify-content: center;
   }
@@ -70,7 +70,7 @@ html {
     flex-direction: row;
     align-items: center;
     gap: 0.625rem;
-    width: 9.8125rem;
+    width: clamp(8.125rem, 9.75vw, 9.8125rem);
     text-decoration: none;
     transition: all 3s ease-out;
   }
@@ -78,14 +78,14 @@ html {
     color: #ffffff;
     text-align: left;
     font-family: Poppins;
-    font-size: 0.5rem;
+    font-size: clamp(0.4rem, 0.8vw, 0.5rem);
     font-weight: 400;
     line-height: 65%;
     width: 6.5rem;
   }
   &__logo-bold {
     color: #ffffff;
-    font-size: 1.438rem;
+    font-size: clamp(1rem, 2.15vw, 1.438rem);
     font-weight: 800;
     line-height: 90%;
     font-family: Poppins;
@@ -97,7 +97,7 @@ html {
   &__logo-subtitle {
     color: #28a745;
     font-family: Poppins;
-    font-size: 0.5rem;
+    font-size: clamp(0.4rem, 0.8vw, 0.5rem);
     font-weight: 400;
   }
   &__logo-img {
@@ -164,7 +164,7 @@ html {
     font-size: 0.875rem;
     font-weight: 400;
     text-decoration: none;
-    white-space: nowrap; 
+    white-space: nowrap;
   }
   &__nav-item a {
     text-decoration: none;
@@ -173,7 +173,7 @@ html {
     background: #ffc107;
     position: absolute;
     bottom: 0;
-    left: 0; 
+    left: 0;
     height: 0.25rem;
     width: 0; /* start at 0 */
     opacity: 0;
@@ -215,7 +215,7 @@ html {
   }
 }
 
- /* Dropdown menu */
+/* Dropdown menu */
 .dropdown {
   display: none;
   flex-direction: column;
@@ -252,26 +252,26 @@ html {
     }
     to {
       opacity: 1;
-      transform: translateY(0); 
+      transform: translateY(0);
     }
   }
 }
 
-/* Language dropdown */ 
-.language {  
-  &-dropdown { 
+/* Language dropdown */
+.language {
+  &-dropdown {
     position: relative;
-    display: inline-block; 
-  } 
-  &-dropdown__btn {  
-    padding: 0.625rem clamp(0.25rem, 2.16vw, 2rem);
+    display: inline-block;
+  }
+  &-dropdown__btn {
+    padding: 0.625rem clamp(0.25rem, 0.5vw, 2rem);
     cursor: pointer;
-    background: transparent;       
+    background: transparent;
     border: none;
     font-size: 0.75rem;
     color: #ffffff;
     font-weight: 400;
-    width: auto;
+    width: clamp(6.25rem, 12.65vw, 10rem);
     height: 2.1875rem;
     display: flex;
     justify-content: center;
@@ -290,12 +290,13 @@ html {
     left: 0;
     background: white;
     border: 0.0625rem solid #000;
-    width: 8.125rem;
+    width: 100%;
     border-radius: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
     z-index: 100;
+    box-sizing: border-box;
   }
   &-dropdown__option {
     padding: 0.625rem 1.375rem;
@@ -304,14 +305,14 @@ html {
     font-weight: 400;
     font-size: 0.75rem;
     text-align: left;
-    width: 8.125rem;
+    width: 100%;
     height: 2.1875rem;
     display: flex;
     align-items: center;
     gap: 0.3125rem;
   }
   &-dropdown__option:hover {
-    background: #d0d1d7; 
+    background: #d0d1d7;
     border-radius: 1rem;
   }
   &-dropdown.active .language-dropdown__menu {
@@ -323,7 +324,6 @@ html {
   }
 }
 
- 
 /* Footer */
 .footer {
   //  background: rgba(255, 255, 255, 0.1);
@@ -390,7 +390,7 @@ html {
     &__login {
       padding: 0.375rem 0.75rem;
       font-size: 0.75rem;
-      width: auto; 
+      width: auto;
     }
     &__nav {
       display: none;
@@ -399,24 +399,23 @@ html {
       justify-content: start;
       width: auto;
     }
-    &__right { 
-      width: auto; 
+    &__right {
+      width: auto;
     }
-  } 
+  }
 
-  .burger { 
+  .burger {
     display: flex;
   }
 
   .footer {
     font-size: 0.8rem;
-  } 
+  }
 }
 
 /* ---------------- Phone (<= 480px) ---------------- */
 @media (max-width: 480px) {
-  .footer {       
-    font-size: 0.55rem; 
+  .footer {
+    font-size: 0.55rem;
   }
 }
- 
