@@ -11,7 +11,7 @@ html {
   font-size: 16px;
   transition: none !important; 
 }
-
+  
 /* Header */
 .header {
   width: 100%;
@@ -70,7 +70,7 @@ html {
     flex-direction: row;
     align-items: center;
     gap: 0.625rem;
-    width: clamp(8.125rem, 9.75vw, 9.8125rem);
+    width: clamp(8.125rem, 16.5vw, 9.8125rem);
     text-decoration: none;
     transition: all 3s ease-out;
   }

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ----------------------------
-  // Mini-Regulator Switcher
+  // Switcher
   // ----------------------------
   const miniButtons = document.querySelectorAll(".mini-regulator__btn");
   const miniVariants = document.querySelectorAll(".mini-regulator__variant");
@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function activateMini(id, updateHash = true) {
     const target = document.getElementById(id);
     if (!target) return;
-
-    // Deactivate all
+   
     miniButtons.forEach((b) =>
       b.classList.remove("mini-regulator__btn--active")
     );
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
       v.classList.remove("mini-regulator__variant--active")
     );
 
-    // Activate selected
     const btn = document.querySelector(
       `.mini-regulator__btn[data-mini="${id}"]`
     );
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (updateHash) history.replaceState(null, "", `#${id}`);
   }
 
-  // Click handling
   miniButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -36,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Restore from hash or default
   const hash = window.location.hash.substring(1);
   if (hash && document.getElementById(hash)) {
     activateMini(hash, false);
@@ -46,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ----------------------------
-  // i18next Initialization
+  // Translation
   // ----------------------------
   const savedLang = localStorage.getItem("lang") || "ru";
 

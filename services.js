@@ -1,4 +1,4 @@
-// Variant Switcher
+// --------------- Variant Switcher ---------------
 document.addEventListener("DOMContentLoaded", () => {
   const serviceButtons = document.querySelectorAll(".services__btn");
   const serviceVariants = document.querySelectorAll(".services__variant");
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mv) mv.classList.add("mini-services__variant--active");
   }
 
-  // fallback for services
   if (!document.querySelector(".services__variant--active")) {
     const firstServiceBtn = serviceButtons[0];
     if (firstServiceBtn?.dataset.variant) {
@@ -93,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // fallback for mini-services
   const activeService = document.querySelector(".services__variant--active");
   if (activeService) {
     const nestedActiveMini = activeService.querySelector(
@@ -105,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  //  click handlers
   serviceButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const targetId = button.dataset.variant;
@@ -121,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // hash handling
   const hash = window.location.hash.substring(1);
   if (hash) {
     const elem = document.getElementById(hash);
@@ -137,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// --------------- Translation ---------------
 document.addEventListener("DOMContentLoaded", () => {
-  // --- i18next initialization ---
   i18next.init(
     {
       lng: savedLang || "ru",
@@ -452,7 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       updateGlobalTranslations();
 
-      // Define messages
+      // --------------- Message board ---------------
       window.messages1 = [
         {
           violation_key: "messages.v1.violation",
@@ -531,7 +527,6 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ];
 
-      // Initialize message boards
       initMessageBoard(".mini-services__message-board--1", window.messages1);
       initMessageBoard(".mini-services__message-board--2", window.messages2);
       initMessageBoard(".mini-services__message-board--3", window.messages3);
@@ -544,15 +539,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".mini-services__input").forEach((div) => {
     const key = div.dataset.i18n;
 
-    // Set initial placeholder
     div.setAttribute("data-placeholder-text", i18next.t(key));
 
-    // Update placeholder on language change
     i18next.on("languageChanged", () => {
       div.setAttribute("data-placeholder-text", i18next.t(key));
     });
 
-    // Focus behavior
     div.addEventListener("focus", () => {
       const placeholder = div.getAttribute("data-placeholder-text");
       if (
@@ -564,7 +556,6 @@ document.addEventListener("DOMContentLoaded", () => {
       div.style.color = "#273c63";
     });
 
-    // Blur behavior
     div.addEventListener("blur", () => {
       if (div.textContent.trim() === "") {
         div.innerHTML = "";
@@ -573,7 +564,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Function to translate all elements globally ---
   function updateGlobalTranslations() {
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.dataset.i18n;
@@ -581,7 +571,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- message board logic ---
   function initMessageBoard(boardSelector, messagesArr) {
     const board = document.querySelector(boardSelector);
     if (!board) return;
@@ -602,7 +591,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const mod10 = count % 10;
         const mod100 = count % 100;
 
-        // Russian pluralization
         const isOne = mod10 === 1 && mod100 !== 11;
         const isFew = mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14);
         const isMany = !isOne && !isFew;
@@ -628,7 +616,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderMessages(messagesArr) {
       board.innerHTML = "";
 
-      // Header warning
       const header = document.createElement("div");
       header.className = "mini-services__message";
 
@@ -704,13 +691,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMessages(messagesArr);
   }
 
-  // --- Language switcher ---
   window.changeLang = function (lang) {
     i18next.changeLanguage(lang, () => {
-      // Update global UI
       updateGlobalTranslations();
 
-      // Re-render all boards
       initMessageBoard(".mini-services__message-board--1", window.messages1);
       initMessageBoard(".mini-services__message-board--2", window.messages2);
       initMessageBoard(".mini-services__message-board--3", window.messages3);
@@ -720,9 +704,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // --- Search button logic ---
+  // --------------- Search button ---------------
   (function () {
-    // Mini-service boards
     const boards = document.querySelectorAll(".mini-services__message-board");
     boards.forEach((board) => {
       Object.assign(board.style, {
@@ -761,7 +744,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Utility: Generate registration number
     function generateRegNumber() {
       const d = new Date();
       const yyyy = d.getFullYear().toString().slice(-2);
@@ -771,7 +753,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return `REG-${yyyy}${mm}${dd}-${rand}`;
     }
 
-    // Generic modal initializer
     function setupModal(openBtnId, overlayId, closeBtnId, regNumberId) {
       const openBtn = document.getElementById(openBtnId);
       const modalOverlay = document.getElementById(overlayId);
@@ -828,7 +809,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Initialize both modals
     setupModal("submitBtn", "modalOverlay", "closeModal", "modalRegNumber");
     setupModal(
       "checkStatusBtn",
@@ -862,14 +842,12 @@ document.addEventListener("DOMContentLoaded", () => {
   )
     return;
 
-  // Disable editing of all placeholders
   editables.forEach((el) => el.setAttribute("contenteditable", "false"));
 
-  // Append calendar to calculatorBox and remove active class initially
   calculatorBox.appendChild(calendar);
   calendar.classList.remove("active");
 
-  // --- Calendar data ---
+  // --------------- Calendar ---------------
   const today = new Date();
   const now = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const YEAR = now.getFullYear();
@@ -1006,7 +984,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCalendar();
 
-  // --- Toggle calendar and select date per input ---
   calendarBtns.forEach((btn, i) => {
     const placeholder = datePlaceholders[i];
 
@@ -1069,15 +1046,14 @@ fileInput.addEventListener("change", () => {
   console.log("Selected files:", files);
 });
 
-// Forget Modal JS
+// --------------- Forget Modal Logic ---------------
 (function () {
-  const openBtn = document.getElementById("openForgetModal"); // button that opens modal
+  const openBtn = document.getElementById("openForgetModal");
   const modalOverlay = document.getElementById("forgetModalOverlay");
   const closeBtn = document.getElementById("closeForgetModal");
 
   if (!openBtn || !modalOverlay || !closeBtn) return;
 
-  // Initialize modal state
   Object.assign(modalOverlay.style, {
     opacity: "0",
     transition: "opacity 0.3s ease",
@@ -1091,7 +1067,6 @@ fileInput.addEventListener("change", () => {
     opacity: "0",
   });
 
-  // Show modal
   function showModal() {
     modalOverlay.classList.add("active");
     modalOverlay.style.pointerEvents = "auto";
@@ -1103,7 +1078,6 @@ fileInput.addEventListener("change", () => {
     });
   }
 
-  // Hide modal
   function hideModal() {
     modalContainer.style.opacity = "0";
     modalContainer.style.transform = "scale(0.95)";
@@ -1113,11 +1087,9 @@ fileInput.addEventListener("change", () => {
     setTimeout(() => modalOverlay.classList.remove("active"), 300);
   }
 
-  // Click events
   openBtn.addEventListener("click", showModal);
   closeBtn.addEventListener("click", hideModal);
 
-  // Close when clicking outside modal container
   modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) hideModal();
   });
