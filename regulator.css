@@ -101,12 +101,11 @@ a {
 }
 .mini-regulator__category {
   min-width: 8.625rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: #4894CB;
   padding: 0.625rem;
-  box-shadow: 0 4px 4px 0 rgba(0, 123, 255, 0.25);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
 }
 .mini-regulator__input {
