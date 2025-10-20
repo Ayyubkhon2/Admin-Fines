@@ -62,10 +62,10 @@ a {
   height: auto;
 }
 .mini-regulator__btn--active {
-  background: #DBE6F4;
+  background: #c7e7e0;
 }
 .mini-regulator__btn--active:hover {
-  background: #DBE6F4;
+  background: #b7dcd4;
 }
 .mini-regulator__box {
   display: grid;

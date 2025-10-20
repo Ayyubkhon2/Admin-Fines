@@ -7,12 +7,12 @@ body {
   font-family: mulish; 
   color: #ffffff;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; 
   height: 100%; 
   display: flex;  
   flex-direction: column; 
   backdrop-filter: none !important; 
-  -webkit-backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important; 
   transform: none !important;
 } 
 
@@ -61,10 +61,10 @@ a {
     height: auto;
   }
   &__btn--active {
-    background: #DBE6F4;
+    background: #c7e7e0;
   }
   &__btn--active:hover {
-    background: #DBE6F4;
+    background: #b7dcd4;
   }
   &__box {
     display: grid;

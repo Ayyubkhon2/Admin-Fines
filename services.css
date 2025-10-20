@@ -59,11 +59,11 @@ a {
   background: #e5e5e5;
 }
 .mini-services__btn--active {
-  background: #1675cf;
+  background: #00b894;
   color: #fff;
 }
 .mini-services__btn--active:hover {
-  background: #1675cf;
+  background: #1ac9a2;
 }
 .mini-services__box {
   display: grid;
