@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const serviceButtons = document.querySelectorAll(".services__btn");
   const serviceVariants = document.querySelectorAll(".services__variant");
-
+ 
   function activateService(id, updateHash = true) {
     const target = document.getElementById(id);
     if (!target || !target.classList.contains("services__variant")) return;

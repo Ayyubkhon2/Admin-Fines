@@ -1,6 +1,6 @@
 /* Reset */
 * {
-  margin: 0;
+  margin: 0; 
   padding: 0;
   box-sizing: border-box;
 }
@@ -18,9 +18,10 @@ html {
   background: #0056b3;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
   display: flex;
   justify-content: center;
+
   &__container {
     max-width: 1200px;
     min-height: 4.75rem;
@@ -30,12 +31,14 @@ html {
     justify-content: space-between;
     align-items: center;
   }
+
   &__left {
     display: flex;
     gap: clamp(0.5rem, 1.85vw, 1.875rem);
     width: 29.5625rem;
     justify-content: center;
   }
+
   &__right {
     display: flex;
     gap: 0.625rem;
@@ -43,6 +46,7 @@ html {
     align-items: center;
     width: 13.375rem;
   }
+
   &__login {
     background: none;
     color: #ffffff;
@@ -58,12 +62,14 @@ html {
     align-items: center;
     gap: 0.5rem;
   }
+
   &__login:hover {
     background-color: rgba(255, 255, 255, 0.1);
     transition: ease-out 0.3s;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
     border: solid 1px rgba(255, 255, 255, 0.5);
   }
+
   /* Logo */
   &__logo {
     display: flex;
@@ -74,6 +80,7 @@ html {
     text-decoration: none;
     transition: all 3s ease-out;
   }
+
   &__logo-description {
     color: #ffffff;
     text-align: left;
@@ -83,6 +90,7 @@ html {
     line-height: 65%;
     width: 6.5rem;
   }
+
   &__logo-bold {
     color: #ffffff;
     font-size: clamp(1rem, 2.15vw, 1.438rem);
@@ -90,16 +98,19 @@ html {
     line-height: 90%;
     font-family: Poppins;
   }
+
   &__logo-text--wrap {
     display: flex;
     flex-direction: column;
   }
+
   &__logo-subtitle {
     color: #28a745;
     font-family: Poppins;
     font-size: clamp(0.4rem, 0.8vw, 0.5rem);
     font-weight: 400;
   }
+
   &__logo-img {
     width: 2.25rem;
     height: 2.25rem;
@@ -107,25 +118,31 @@ html {
     animation: spin 5s linear infinite;
     transition: transform 0.3s ease;
   }
+
   &__logo-img:hover {
     background-color: rgba(28, 155, 102, 0.2);
     animation: pulse 1.5s ease-in-out infinite;
     box-shadow: 0 0 1.875rem rgba(28, 155, 102, 0.6),
       0 0 3.75rem rgba(28, 155, 102, 0.2);
   }
+
   @keyframes spin {
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(360deg);
     }
   }
+
   @keyframes pulse {
+
     0%,
     100% {
       transform: scale(1);
     }
+
     50% {
       transform: scale(1.08);
     }
@@ -140,6 +157,7 @@ html {
     height: 2rem;
     position: relative;
   }
+
   &__nav-list {
     display: flex;
     list-style: none;
@@ -148,6 +166,7 @@ html {
     position: relative;
     gap: clamp(0.75rem, 2vw, 2rem);
   }
+
   &__nav-item {
     display: flex;
     align-items: center;
@@ -159,6 +178,7 @@ html {
     height: 2rem;
     position: relative;
   }
+
   &__nav-item span {
     color: #fff;
     font-size: 0.875rem;
@@ -166,16 +186,19 @@ html {
     text-decoration: none;
     white-space: nowrap;
   }
+
   &__nav-item a {
     text-decoration: none;
   }
+
   &__nav-underline {
     background: #ffc107;
     position: absolute;
     bottom: 0;
     left: 0;
     height: 0.25rem;
-    width: 0; /* start at 0 */
+    width: 0;
+    /* start at 0 */
     opacity: 0;
     transform: translateX(0);
     transition: transform 0.3s ease, width 0.3s ease, opacity 0.3s ease;
@@ -195,6 +218,7 @@ html {
   margin: 1rem;
   z-index: 1000;
   position: relative;
+
   & span {
     height: 0.125rem;
     width: 100%;
@@ -204,12 +228,15 @@ html {
     transition: all 0.3s ease;
     transform-origin: center;
   }
+
   &.active span:nth-child(1) {
     transform: rotate(45deg) translateY(2px) translateX(2px);
   }
+
   &.active span:nth-child(3) {
     opacity: 0;
   }
+
   &.active span:nth-child(2) {
     transform: rotate(-45deg);
   }
@@ -229,32 +256,38 @@ html {
   border-radius: 0.5rem;
   overflow: hidden;
   min-width: 150px;
+
   &__row {
     display: flex;
     align-items: center;
     gap: 0.25rem;
   }
+
   & a {
     color: #0056b3;
     padding: 0.75rem 1rem;
     text-decoration: none;
     transition: background 0.3s;
   }
+
   & a:hover {
     background: #d0d1d7;
     color: #ffffff;
     transition: ease-out 0.3s;
     transform: scale(1.02);
   }
+
   &.active {
     display: flex;
     animation: dropdownFade 0.3s ease;
   }
+
   @keyframes dropdownFade {
     from {
       opacity: 0;
       transform: translateY(-10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -268,6 +301,7 @@ html {
     position: relative;
     display: inline-block;
   }
+
   &-dropdown__btn {
     padding: 0.625rem clamp(0.25rem, 0.5vw, 2rem);
     cursor: pointer;
@@ -282,12 +316,14 @@ html {
     justify-content: center;
     text-align: center;
   }
+
   &-dropdown__btn:hover {
     cursor: pointer;
     background: rgb(255, 255, 255, 0.1);
     color: #ffffff;
     border-radius: 1rem;
   }
+
   &-dropdown__menu {
     display: none;
     position: absolute;
@@ -303,6 +339,7 @@ html {
     z-index: 100;
     box-sizing: border-box;
   }
+
   &-dropdown__option {
     padding: 0.625rem 1.375rem;
     cursor: pointer;
@@ -316,13 +353,16 @@ html {
     align-items: center;
     gap: 0.3125rem;
   }
+
   &-dropdown__option:hover {
     background: #d0d1d7;
     border-radius: 1rem;
   }
+
   &-dropdown.active .language-dropdown__menu {
     display: block;
   }
+
   &-dropdown__flag {
     width: 0.75rem;
     height: 0.75rem;
@@ -348,23 +388,29 @@ html {
 .reveal {
   opacity: 0;
   transition: all 0.5s ease-out;
+
   &-bottom {
     transform: translateY(30px);
   }
+
   &-bottom.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
   &-left {
     transform: translateX(-30px);
   }
+
   &-left.visible {
     opacity: 1;
     transform: translateX(0);
   }
+
   &-right {
     transform: translateX(30px);
   }
+
   &-right.visible {
     opacity: 1;
     transform: translateX(0);
@@ -395,13 +441,16 @@ html {
     &__login {
       display: none;
     }
+
     &__nav {
       display: none;
     }
+
     &__left {
       justify-content: start;
       width: auto;
     }
+
     &__right {
       width: auto;
     }
@@ -410,12 +459,13 @@ html {
   .language-dropdown__btn {
     width: 7.5rem;
   }
+
   .burger {
     display: flex;
   }
 
   .footer {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
   }
 }
 

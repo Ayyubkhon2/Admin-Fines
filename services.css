@@ -66,16 +66,15 @@ a {
   background: #1ac9a2;
 }
 .mini-services__box {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  display: flex;
   gap: 1rem;
-  width: 60rem;
+  width: 100%;
   margin-bottom: 1.25rem;
 }
 .mini-services__variant {
   display: none;
   position: relative;
+  width: 100%;
 }
 .mini-services__variant--active {
   display: block;
@@ -89,7 +88,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 60rem;
+  width: 100%;
   gap: 0.25rem;
 }
 .mini-services__input {
@@ -98,7 +97,7 @@ a {
   background: #fff;
   border-radius: 1rem;
   color: #999;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3.75vw, 1.25rem);
   font-weight: 600;
   cursor: text;
   position: relative;
@@ -132,7 +131,7 @@ a {
 .mini-services__search {
   background: #1775cf;
   color: #fff;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3.75vw, 1.25rem);
   padding: 0.625rem 1.25rem;
   margin: 1.25rem 0.9375rem;
   border-radius: 1rem;
@@ -145,7 +144,7 @@ a {
 .mini-services__message-board {
   background: #fff;
   border-radius: 1rem;
-  width: 60rem;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -280,15 +279,14 @@ a {
   flex-direction: column;
   gap: 1.875rem;
   border-radius: 1rem;
-  padding: 50px;
+  padding: clamp(25px, 8.5vw, 50px);
   margin: 0 auto clamp(2rem, 7vw, 4rem);
-  align-items: center;
+  align-items: flex-start;
 }
 .services__subtitle {
   color: #212529;
-  font-size: 3rem;
+  font-size: clamp(1rem, 3vw, 3rem);
   font-weight: 800;
-  width: 60rem;
 }
 .services__calculator-box {
   width: 60rem;
@@ -826,5 +824,20 @@ html {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
     gap: 1rem;
+  }
+  .services__subtitle {
+    width: 100%;
+  }
+  .mini-services__box {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+  .mini-services__row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, auto);
   }
 }/*# sourceMappingURL=services.css.map */
